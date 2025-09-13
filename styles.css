@@ -6,3 +6,4 @@ header { background: #f5f5f5; border-bottom: 1px solid #e5e5e5; }
 nav a { margin-right: 12px; text-decoration: none; color: #333; }
 button { padding: 8px 14px; border: 1px solid #ddd; border-radius: 8px; cursor: pointer; }
 button:hover { background: #f0f0f0; }
+
