@@ -3,24 +3,76 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>My Website</title>
+  <title>ClutchGear – カタログ</title>
+
+  <!-- Tailwind CDN（開発用）-->
+  <script src="https://cdn.tailwindcss.com"></script>
+
   <link rel="stylesheet" href="./styles.css" />
 </head>
-<body>
-  <header>
-    <h1>こんにちは！</h1>
-    <nav><a href="#about">About</a> | <a href="#contact">Contact</a></nav>
+<body class="bg-neutral-50 text-neutral-900">
+
+  <!-- ヘッダー -->
+  <header class="sticky top-0 z-20 bg-white/80 backdrop-blur border-b">
+    <div class="max-w-6xl mx-auto px-4 py-3 flex items-center gap-4">
+      <h1 class="text-lg font-bold">ClutchGear</h1>
+      <nav class="ml-auto text-sm text-neutral-600">
+        <a class="hover:text-neutral-900 mr-4" href="https://tiktok.com/@clutchgear" target="_blank" rel="noreferrer">TikTok</a>
+        <a class="hover:text-neutral-900" href="https://x.com/clutchgear" target="_blank" rel="noreferrer">X</a>
+      </nav>
+    </div>
+
+    <!-- 検索・フィルタ -->
+    <div class="max-w-6xl mx-auto px-4 pb-3">
+      <div class="flex flex-col md:flex-row gap-3 items-stretch md:items-center">
+        <div class="flex-1 flex items-center gap-2 bg-neutral-100 rounded-2xl px-4 py-2">
+          <span class="text-neutral-500">🔎</span>
+          <input id="q" class="w-full bg-transparent outline-none py-1" placeholder="検索：製品名・ブランド・タグ" />
+        </div>
+        <div class="flex gap-2 flex-wrap">
+          <button data-type="all" class="type-pill px-3 py-1.5 rounded-full text-sm border bg-black text-white border-black">All</button>
+          <button data-type="mouse" class="type-pill px-3 py-1.5 rounded-full text-sm border bg-white hover:bg-neutral-100">Mice</button>
+          <button data-type="keyboard" class="type-pill px-3 py-1.5 rounded-full text-sm border bg-white hover:bg-neutral-100">Keyboards</button>
+          <button data-type="headset" class="type-pill px-3 py-1.5 rounded-full text-sm border bg-white hover:bg-neutral-100">Headsets</button>
+        </div>
+      </div>
+
+      <div class="mt-2 flex items-center gap-2 flex-wrap">
+        <span class="text-xs text-neutral-500">Quick tags:</span>
+        <div id="tagChips" class="flex gap-2 flex-wrap"></div>
+        <button id="clearTag" class="text-xs underline ml-2 text-neutral-600 hidden">タグ解除</button>
+
+        <div class="ml-auto flex items-center gap-2">
+          <label class="text-xs text-neutral-500">Sort:</label>
+          <select id="sort" class="text-sm px-2 py-1 rounded-lg border bg-white">
+            <option value="popularity">人気順</option>
+            <option value="price">価格が安い順</option>
+            <option value="new">新着順</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- タブ -->
+      <nav class="mt-3 flex gap-2">
+        <button data-tab="products" class="tab-btn px-3 py-1.5 rounded-full text-sm border bg-neutral-900 text-white border-neutral-900">プロダクト</button>
+        <button data-tab="players"  class="tab-btn px-3 py-1.5 rounded-full text-sm border bg-white hover:bg-neutral-100">プレイヤー</button>
+        <button data-tab="wish"     class="tab-btn px-3 py-1.5 rounded-full text-sm border bg-white hover:bg-neutral-100">Wishlist (0)</button>
+      </nav>
+    </div>
   </header>
 
-  <main id="about">
-    <p>VS Code で作った最初のサイトです。</p>
-    <button id="helloBtn">ボタン</button>
+  <!-- コンテンツ -->
+  <main class="max-w-6xl mx-auto px-4 py-6">
+    <section id="productsView" class=""></section>
+    <section id="playersView" class="hidden"></section>
+    <section id="wishView"    class="hidden"></section>
   </main>
 
-  <footer id="contact">
-    <small>© 2025 My Website</small>
+  <footer class="border-t py-6 text-center text-xs text-neutral-500">
+    © <span id="year"></span> ClutchGear. All rights reserved.
   </footer>
 
   <script src="./script.js"></script>
 </body>
 </html>
+
