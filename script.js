@@ -42,11 +42,11 @@ const PRODUCTS = [
     brand: "HyperX",
     type: "headset",
     priceJPY: 16800,
-    image: "https://via.placeholder.com/640x480?text=Cloud+III+Wireless",
+    image: "https://m.media-amazon.com/images/I/61fBPVfMt3L.jpg",
     tags: ["Wireless", "Comfort"],
     popularity: 84,
     addedAt: "2025-05-19",
-    affiliate: "AFFILIATE_URL_HYPERX_CLOUD3W",
+    affiliate: "https://amzn.to/4gqSSs9",
   },
 ];
 
