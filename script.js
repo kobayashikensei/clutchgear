@@ -18,11 +18,11 @@ const PRODUCTS = [
     brand: "Lamzu",
     type: "mouse",
     priceJPY: 19980,
-    image: "https://via.placeholder.com/640x480?text=Lamzu+Atlantis+V2+Pro",
+    image: "https://shop.hid-labs.com/wp-content/uploads/2023/09/Atlantis-OG-V2-PRO-WH3.jpg",
     tags: ["Lightweight", "3395", "Wireless"],
     popularity: 90,
     addedAt: "2025-07-02",
-    affiliate: "AFFILIATE_URL_LAMZU_ATLANTIS_V2_PRO",
+    affiliate: "https://amzn.to/42z1Fm9",
   },
   {
     id: "p-superlightx",
