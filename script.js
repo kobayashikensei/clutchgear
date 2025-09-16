@@ -70,13 +70,10 @@ const PLAYERS = [
   },
 ];
 
-const QUICK_TAGS = ["Lightweight", "Wireless", "60%", "Analog", "Wooting"];
-
 // ====== 状態 ======
 const state = {
   q: "",
   type: "all",
-  tag: "",
   sort: "popularity", // popularity | price | new
   tab: "products",    // products | players | wish
   wishlist: loadWishlist(),
@@ -93,7 +90,7 @@ function saveWishlist() {
   localStorage.setItem("cg_wishlist_v1", JSON.stringify(state.wishlist));
 }
 
-// ====== 細かいユーティリティ ======
+// ====== ユーティリティ ======
 const yen = (n) =>
   new Intl.NumberFormat("ja-JP", { style: "currency", currency: "JPY" }).format(n);
 const byId = (id) => document.getElementById(id);
@@ -116,7 +113,6 @@ function setActiveTabButtons() {
         ? "bg-neutral-900 text-white border-neutral-900"
         : "bg-white hover:bg-neutral-100");
   });
-  // カウント更新
   const wishBtn = [...document.querySelectorAll(".tab-btn")].find(
     (b) => b.dataset.tab === "wish"
   );
@@ -133,14 +129,6 @@ function showView(tab) {
 function getFilteredProducts() {
   let arr = PRODUCTS.slice();
   if (state.type !== "all") arr = arr.filter((p) => p.type === state.type);
-  if (state.tag) {
-    const t = state.tag.toLowerCase();
-    arr = arr.filter(
-      (p) =>
-        p.tags.some((x) => x.toLowerCase() === t) ||
-        p.brand.toLowerCase() === t
-    );
-  }
   if (state.q.trim()) {
     const s = state.q.toLowerCase();
     arr = arr.filter(
@@ -200,7 +188,6 @@ function renderProducts() {
     </div>
   `;
 
-  // wishlist toggle
   root.querySelectorAll("[data-wish]").forEach((btn) => {
     btn.addEventListener("click", () => {
       const id = btn.getAttribute("data-wish");
@@ -258,7 +245,6 @@ function renderWish() {
     root.innerHTML = `<div class="py-16 text-center text-neutral-500">Wishlist は空です。ハートを押して追加してね！</div>`;
     return;
   }
-  // 簡易：productsと同じカード
   root.innerHTML = `
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
       ${list.map((p) => `
@@ -298,26 +284,6 @@ function renderWish() {
   });
 }
 
-// ====== タグチップ ======
-function renderTagChips() {
-  const box = byId("tagChips");
-  box.innerHTML = QUICK_TAGS.map((t) => {
-    const active = state.tag === t;
-    return `<button data-tag="${t}"
-      class="text-xs px-3 py-1 rounded-full border ${active ? "bg-black text-white border-black" : "bg-white hover:bg-neutral-100"}">${t}</button>`;
-  }).join("");
-  byId("clearTag").classList.toggle("hidden", !state.tag);
-
-  box.querySelectorAll("[data-tag]").forEach((btn) => {
-    btn.addEventListener("click", () => {
-      const t = btn.getAttribute("data-tag");
-      state.tag = state.tag === t ? "" : t;
-      renderTagChips();
-      if (state.tab === "products") renderProducts();
-    });
-  });
-}
-
 // ====== 現在タブ再描画 ======
 function renderCurrentTab() {
   if (state.tab === "products") renderProducts();
@@ -327,10 +293,8 @@ function renderCurrentTab() {
 
 // ====== 初期化 ======
 function init() {
-  // 年表示
   byId("year").textContent = new Date().getFullYear();
 
-  // 入力・セレクト
   const qInput = byId("q");
   const sortSel = byId("sort");
   qInput.addEventListener("input", (e) => {
@@ -344,7 +308,6 @@ function init() {
     if (state.tab === "wish") renderWish();
   });
 
-  // タイプフィルタ
   document.querySelectorAll(".type-pill").forEach((btn) => {
     btn.addEventListener("click", () => {
       state.type = btn.dataset.type;
@@ -353,7 +316,6 @@ function init() {
     });
   });
 
-  // タブ
   document.querySelectorAll(".tab-btn").forEach((btn) => {
     btn.addEventListener("click", () => {
       state.tab = btn.dataset.tab;
@@ -363,15 +325,6 @@ function init() {
     });
   });
 
-  // タグ
-  renderTagChips();
-  byId("clearTag").addEventListener("click", () => {
-    state.tag = "";
-    renderTagChips();
-    if (state.tab === "products") renderProducts();
-  });
-
-  // 初期描画
   setActiveTypePill();
   setActiveTabButtons();
   showView(state.tab);
@@ -379,3 +332,4 @@ function init() {
 }
 
 document.addEventListener("DOMContentLoaded", init);
+
