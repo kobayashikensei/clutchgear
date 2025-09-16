@@ -333,3 +333,61 @@ function init() {
 
 document.addEventListener("DOMContentLoaded", init);
 
+// ====== モバイル時だけヘッダーをスクロールで隠す ======
+(function mobileHideHeader() {
+  const header = document.getElementById("siteHeader");
+  const main   = document.querySelector("main");
+  if (!header || !main) return;
+
+  const isMobile = () => window.matchMedia("(max-width: 767px)").matches;
+
+  let lastY = window.scrollY;
+  let enabled = false;
+  let ticking = false;
+
+  function setSpacer() {
+    if (!isMobile()) {
+      main.style.paddingTop = "";
+      return;
+    }
+    const h = header.getBoundingClientRect().height;
+    main.style.paddingTop = `${h}px`;
+  }
+
+  function onScroll() {
+    if (!enabled) return;
+    const cur = window.scrollY;
+    const delta = cur - lastY;
+
+    if (Math.abs(delta) < 4) {
+      lastY = cur;
+      return;
+    }
+
+    if (delta > 0 && cur > 10) {
+      header.style.transform = "translateY(-100%)"; // 下スクロール → 隠す
+    } else {
+      header.style.transform = "translateY(0)";     // 上スクロール → 表示
+    }
+    lastY = cur;
+  }
+
+  function updateMode() {
+    enabled = isMobile();
+    header.style.transform = "translateY(0)";
+    setSpacer();
+  }
+
+  updateMode();
+  window.addEventListener("resize", updateMode);
+  window.addEventListener("orientationchange", updateMode);
+
+  window.addEventListener("scroll", () => {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(() => {
+      onScroll();
+      ticking = false;
+    });
+  });
+})();
