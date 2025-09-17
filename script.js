@@ -1,4 +1,4 @@
-// ====== データ（必要に応じて編集） ======
+// ====== データ ======
 const PRODUCTS = [
   {
     id: "p-wooting-60he",
@@ -128,19 +128,15 @@ const state = {
 };
 
 function loadWishlist() {
-  try {
-    return JSON.parse(localStorage.getItem("cg_wishlist_v1") || "[]");
-  } catch {
-    return [];
-  }
+  try { return JSON.parse(localStorage.getItem("cg_wishlist_v1") || "[]"); }
+  catch { return []; }
 }
 function saveWishlist() {
   localStorage.setItem("cg_wishlist_v1", JSON.stringify(state.wishlist));
 }
 
 // ====== ユーティリティ ======
-const yen = (n) =>
-  new Intl.NumberFormat("ja-JP", { style: "currency", currency: "JPY" }).format(n);
+const yen = (n) => new Intl.NumberFormat("ja-JP",{style:"currency",currency:"JPY"}).format(n);
 const byId = (id) => document.getElementById(id);
 
 function setActiveTypePill() {
@@ -151,127 +147,94 @@ function setActiveTypePill() {
       (active ? "bg-black text-white border-black" : "bg-white hover:bg-neutral-100");
   });
 }
-
 function setActiveTabButtons() {
   document.querySelectorAll(".tab-btn").forEach((btn) => {
     const active = btn.dataset.tab === state.tab;
     btn.className =
       "tab-btn px-3 py-1.5 rounded-full text-sm border " +
-      (active
-        ? "bg-neutral-900 text-white border-neutral-900"
-        : "bg-white hover:bg-neutral-100");
+      (active ? "bg-neutral-900 text-white border-neutral-900" : "bg-white hover:bg-neutral-100");
   });
-  const wishBtn = [...document.querySelectorAll(".tab-btn")].find(
-    (b) => b.dataset.tab === "wish"
-  );
+  const wishBtn = [...document.querySelectorAll(".tab-btn")].find(b => b.dataset.tab === "wish");
   if (wishBtn) wishBtn.textContent = `Wishlist (${state.wishlist.length})`;
 }
-
 function showView(tab) {
   byId("productsView").classList.toggle("hidden", tab !== "products");
   byId("playersView").classList.toggle("hidden", tab !== "players");
   byId("wishView").classList.toggle("hidden", tab !== "wish");
 }
 
-// ====== レンダリング（Products） ======
+// ====== Products ======
 function getFilteredProducts() {
   let arr = PRODUCTS.slice();
-
-  // type フィルタ
-  if (state.type !== "all") {
-    arr = arr.filter((p) => p.type === state.type);
-  }
-
-  // 検索フィルタ
+  if (state.type !== "all") arr = arr.filter((p) => p.type === state.type);
   if (state.q.trim()) {
     const s = state.q.toLowerCase();
     arr = arr.filter((p) =>
-      (p.name || "").toLowerCase().includes(s) ||
-      (p.brand || "").toLowerCase().includes(s) ||
-      (Array.isArray(p.tags) ? p.tags : []).some((t) => (t || "").toLowerCase().includes(s))
+      (p.name||"").toLowerCase().includes(s) ||
+      (p.brand||"").toLowerCase().includes(s) ||
+      (Array.isArray(p.tags)?p.tags:[]).some(t => (t||"").toLowerCase().includes(s))
     );
   }
-
-  // 並び替え
-  arr.sort((a, b) => {
-    if (state.sort === "price") return a.priceJPY - b.priceJPY;
-    if (state.sort === "new") return new Date(b.addedAt) - new Date(a.addedAt);
-    return b.popularity - a.popularity;
+  arr.sort((a,b)=>{
+    if (state.sort==="price") return a.priceJPY-b.priceJPY;
+    if (state.sort==="new")   return new Date(b.addedAt)-new Date(a.addedAt);
+    return b.popularity-a.popularity;
   });
-
-  // DEBUG: ログ出力
-  console.log("[DEBUG] selected type:", state.type);
-  console.log("[DEBUG] filtered count:", arr.length);
-  console.log("[DEBUG] items:", arr.map((p) => ({ id: p.id, type: p.type, name: p.name })));
-
   return arr;
 }
-
 function renderProducts() {
   const list = getFilteredProducts();
   const root = byId("productsView");
   if (!list.length) {
-    root.innerHTML =
-      `<div class="py-16 text-center text-neutral-500">該当する商品が見つかりませんでした。</div>`;
+    root.innerHTML = `<div class="py-16 text-center text-neutral-500">該当する商品が見つかりませんでした。</div>`;
     return;
   }
   root.innerHTML = `
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-      ${list
-        .map((p) => {
-          const inWish = state.wishlist.includes(p.id);
-          return `
-          <article class="group bg-white rounded-2xl shadow-sm border hover:shadow-md transition overflow-hidden">
-            <div class="aspect-[4/3] bg-neutral-100 overflow-hidden">
-              <img src="${p.image}" alt="${p.name}" class="w-full h-full object-cover group-hover:scale-[1.02] transition" />
+      ${list.map(p => `
+        <article class="group bg-white rounded-2xl shadow-sm border hover:shadow-md transition overflow-hidden"
+                 data-product="${p.id}">
+          <div class="aspect-[4/3] bg-neutral-100 overflow-hidden">
+            <img src="${p.image}" alt="${p.name}" class="w-full h-full object-cover group-hover:scale-[1.02] transition" />
+          </div>
+          <div class="p-4 flex flex-col gap-3">
+            <div class="flex items-start justify-between gap-3">
+              <div>
+                <h3 class="text-base font-semibold leading-tight">${p.name}</h3>
+                <p class="text-xs text-neutral-500">${p.brand} ・ ${p.type}</p>
+              </div>
+              <button data-wish="${p.id}"
+                class="rounded-full p-2 border ${state.wishlist.includes(p.id) ? "bg-black text-white border-black" : "bg-white hover:bg-neutral-100"}"
+                title="Wishlistに追加/削除">❤</button>
             </div>
-            <div class="p-4 flex flex-col gap-3">
-              <div class="flex items-start justify-between gap-3">
-                <div>
-                  <h3 class="text-base font-semibold leading-tight">${p.name}</h3>
-                  <p class="text-xs text-neutral-500">${p.brand} ・ ${p.type}</p>
-                </div>
-                <button data-wish="${p.id}"
-                  class="rounded-full p-2 border ${inWish ? "bg-black text-white border-black" : "bg-white hover:bg-neutral-100"}"
-                  title="Wishlistに追加/削除">❤</button>
-              </div>
-              <div class="flex items-center justify-between">
-                <span class="text-lg font-bold">${yen(p.priceJPY)}</span>
-                <a class="text-sm underline hover:no-underline" href="${p.affiliate}" target="_blank" rel="nofollow noopener noreferrer">購入リンク</a>
-              </div>
-              <div class="flex gap-2 flex-wrap">
-                ${(Array.isArray(p.tags) ? p.tags : []).map((t) => `<span class="text-[11px] px-2 py-1 bg-neutral-100 rounded-full">${t}</span>`).join("")}
-              </div>
+            <div class="flex items-center justify-between">
+              <span class="text-lg font-bold">${yen(p.priceJPY)}</span>
+              <a class="text-sm underline hover:no-underline" href="${p.affiliate}" target="_blank" rel="nofollow noopener noreferrer">購入リンク</a>
             </div>
-          </article>`;
-        })
-        .join("")}
+            <div class="flex gap-2 flex-wrap">
+              ${(Array.isArray(p.tags)?p.tags:[]).map(t=>`<span class="text-[11px] px-2 py-1 bg-neutral-100 rounded-full">${t}</span>`).join("")}
+            </div>
+          </div>
+        </article>
+      `).join("")}
     </div>
   `;
-
-  // DEBUG: レンダ後ログ
-  console.log("[DEBUG] renderProducts() rendered:", list.length, "items");
-
-  // wishlist toggle
-  root.querySelectorAll("[data-wish]").forEach((btn) => {
-    btn.addEventListener("click", () => {
+  root.querySelectorAll("[data-wish]").forEach(btn=>{
+    btn.addEventListener("click",()=>{
       const id = btn.getAttribute("data-wish");
-      const idx = state.wishlist.indexOf(id);
-      if (idx >= 0) state.wishlist.splice(idx, 1);
-      else state.wishlist.push(id);
-      saveWishlist();
-      setActiveTabButtons();
-      renderCurrentTab();
+      const i = state.wishlist.indexOf(id);
+      if (i>=0) state.wishlist.splice(i,1); else state.wishlist.push(id);
+      saveWishlist(); setActiveTabButtons(); renderCurrentTab();
     });
   });
 }
 
-// ====== レンダリング（Players） ======
+// ====== Players（一覧） ======
 function renderPlayers() {
-  const map = Object.fromEntries(PRODUCTS.map((p) => [p.id, p]));
+  const map = Object.fromEntries(PRODUCTS.map(p => [p.id,p]));
   const q = state.q.trim().toLowerCase();
   let arr = PLAYERS.slice();
-  if (q) arr = arr.filter((pl) => pl.name.toLowerCase().includes(q) || pl.game.toLowerCase().includes(q));
+  if (q) arr = arr.filter(pl => pl.name.toLowerCase().includes(q) || pl.game.toLowerCase().includes(q));
 
   const root = byId("playersView");
   if (!arr.length) {
@@ -280,31 +243,33 @@ function renderPlayers() {
   }
   root.innerHTML = `
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-      ${arr.map((pl) => `
-        <article class="bg-white rounded-2xl shadow-sm border overflow-hidden">
-          <div class="aspect-[4/3] bg-neutral-100 overflow-hidden">
-            <img src="${pl.image}" alt="${pl.name}" class="w-full h-full object-cover" />
-          </div>
-          <div class="p-4">
-            <h3 class="text-base font-semibold leading-tight">${pl.name}</h3>
-            <p class="text-xs text-neutral-500 mb-3">${pl.game}</p>
-            <ul class="space-y-1">
-              ${pl.devices.map(d => `
-                <li class="text-sm">
-                  <span class="text-neutral-500 mr-1">${d.role}:</span>
-                  <span class="font-medium">${map[d.itemId]?.name || "—"}</span>
-                </li>`).join("")}
-            </ul>
-          </div>
-        </article>
+      ${arr.map(pl=>`
+        <a href="#/player/${pl.id}" class="block">
+          <article class="bg-white rounded-2xl shadow-sm border overflow-hidden hover:shadow-md transition">
+            <div class="aspect-[4/3] bg-neutral-100 overflow-hidden">
+              <img src="${pl.image}" alt="${pl.name}" class="w-full h-full object-cover" />
+            </div>
+            <div class="p-4">
+              <h3 class="text-base font-semibold leading-tight">${pl.name}</h3>
+              <p class="text-xs text-neutral-500 mb-3">${pl.game}</p>
+              <ul class="space-y-1">
+                ${pl.devices.map(d=>`
+                  <li class="text-sm">
+                    <span class="text-neutral-500 mr-1">${d.role}:</span>
+                    <span class="font-medium">${map[d.itemId]?.name || "—"}</span>
+                  </li>`).join("")}
+              </ul>
+            </div>
+          </article>
+        </a>
       `).join("")}
     </div>
   `;
 }
 
-// ====== レンダリング（Wishlist） ======
+// ====== Wishlist ======
 function renderWish() {
-  const list = PRODUCTS.filter((p) => state.wishlist.includes(p.id));
+  const list = PRODUCTS.filter(p => state.wishlist.includes(p.id));
   const root = byId("wishView");
   if (!list.length) {
     root.innerHTML = `<div class="py-16 text-center text-neutral-500">Wishlist は空です。ハートを押して追加してね！</div>`;
@@ -312,7 +277,7 @@ function renderWish() {
   }
   root.innerHTML = `
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-      ${list.map((p) => `
+      ${list.map(p=>`
         <article class="group bg-white rounded-2xl shadow-sm border hover:shadow-md transition overflow-hidden">
           <div class="aspect-[4/3] bg-neutral-100 overflow-hidden">
             <img src="${p.image}" alt="${p.name}" class="w-full h-full object-cover group-hover:scale-[1.02] transition" />
@@ -330,30 +295,121 @@ function renderWish() {
               <a class="text-sm underline hover:no-underline" href="${p.affiliate}" target="_blank" rel="nofollow noopener noreferrer">購入リンク</a>
             </div>
             <div class="flex gap-2 flex-wrap">
-              ${(Array.isArray(p.tags) ? p.tags : []).map((t) => `<span class="text-[11px] px-2 py-1 bg-neutral-100 rounded-full">${t}</span>`).join("")}
+              ${(Array.isArray(p.tags)?p.tags:[]).map(t=>`<span class="text-[11px] px-2 py-1 bg-neutral-100 rounded-full">${t}</span>`).join("")}
             </div>
           </div>
         </article>
       `).join("")}
     </div>
   `;
-
-  root.querySelectorAll("[data-remove]").forEach((btn) => {
-    btn.addEventListener("click", () => {
+  root.querySelectorAll("[data-remove]").forEach(btn=>{
+    btn.addEventListener("click",()=>{
       const id = btn.getAttribute("data-remove");
-      state.wishlist = state.wishlist.filter((x) => x !== id);
-      saveWishlist();
-      setActiveTabButtons();
-      renderCurrentTab();
+      state.wishlist = state.wishlist.filter(x=>x!==id);
+      saveWishlist(); setActiveTabButtons(); renderCurrentTab();
     });
   });
 }
 
+// ====== Player Detail Page (#/player/:id) ======
+function renderPlayerDetail(id) {
+  const root = byId("playerDetailView");
+  const pl = PLAYERS.find(p => p.id === id);
+  const map = Object.fromEntries(PRODUCTS.map(p => [p.id,p]));
+
+  if (!pl) {
+    root.innerHTML = `<div class="py-16 text-center text-neutral-500">プレイヤーが見つかりません。</div>`;
+    return;
+  }
+
+  root.innerHTML = `
+    <div class="max-w-4xl mx-auto">
+      <div class="bg-white rounded-2xl shadow-sm border overflow-hidden">
+        <div class="p-4 flex items-center gap-4">
+          <div class="w-24 h-24 rounded-full overflow-hidden bg-neutral-100">
+            <img src="${pl.image}" alt="${pl.name}" class="w-full h-full object-cover" />
+          </div>
+          <div class="flex-1">
+            <h2 class="text-2xl font-bold">${pl.name}</h2>
+            <p class="text-sm text-neutral-500">${pl.game}</p>
+          </div>
+          <button id="playerBack" class="px-3 py-1.5 text-sm rounded-full border hover:bg-neutral-50">戻る</button>
+        </div>
+      </div>
+
+      <div class="mt-4 bg-white rounded-2xl shadow-sm border overflow-hidden">
+        <div class="px-4 py-3 border-b flex items-center gap-2">
+          <span class="text-lg">🖱️🎧⌨️</span>
+          <h3 class="font-semibold">使用デバイス</h3>
+        </div>
+        <div class="p-4 space-y-3">
+          ${pl.devices.map(d=>{
+            const prod = map[d.itemId];
+            if (!prod) return `<div class="p-3 rounded-lg border">${d.role}: —</div>`;
+            return `
+              <div class="p-3 rounded-lg border flex items-center gap-3 justify-between">
+                <div class="flex items-center gap-3">
+                  <div class="w-16 h-16 rounded bg-neutral-100 overflow-hidden">
+                    <img src="${prod.image}" alt="${prod.name}" class="w-full h-full object-cover">
+                  </div>
+                  <div>
+                    <p class="text-sm text-neutral-500">${d.role}</p>
+                    <p class="font-medium">${prod.name}</p>
+                    <p class="text-xs text-neutral-500">${prod.brand} ・ ${prod.type}</p>
+                  </div>
+                </div>
+                <div class="flex items-center gap-2">
+                  <a class="px-2.5 py-1 text-sm rounded-full border hover:bg-neutral-50"
+                     href="${prod.affiliate}" target="_blank" rel="nofollow noopener noreferrer">購入リンク</a>
+                  <a class="px-2.5 py-1 text-sm rounded-full border hover:bg-neutral-50"
+                     href="#top" data-jump-product="${prod.id}">商品を見る</a>
+                </div>
+              </div>`;
+          }).join("")}
+        </div>
+      </div>
+    </div>
+  `;
+
+  byId("playerBack").addEventListener("click", () => history.back());
+
+  root.querySelectorAll("[data-jump-product]").forEach(a=>{
+    a.addEventListener("click",(e)=>{
+      e.preventDefault();
+      const pid = a.getAttribute("data-jump-product");
+      state.tab = "products"; setActiveTabButtons(); showView("products");
+      byId("playerDetailView").classList.add("hidden");
+      renderProducts();
+      const card = document.querySelector(`[data-product="${pid}"]`);
+      if (card) card.scrollIntoView({behavior:"smooth", block:"start"});
+      if (location.hash.startsWith("#/player/")) history.pushState("", document.title, location.pathname + location.search);
+    });
+  });
+}
+
+// ====== Router (hash) ======
+function router() {
+  const h = location.hash;
+  const detail = byId("playerDetailView");
+  if (h.startsWith("#/player/")) {
+    const id = decodeURIComponent(h.replace("#/player/",""));
+    byId("productsView").classList.add("hidden");
+    byId("playersView").classList.add("hidden");
+    byId("wishView").classList.add("hidden");
+    detail.classList.remove("hidden");
+    renderPlayerDetail(id);
+  } else {
+    detail.classList.add("hidden");
+    showView(state.tab);
+    renderCurrentTab();
+  }
+}
+
 // ====== 現在タブ再描画 ======
 function renderCurrentTab() {
-  if (state.tab === "products") renderProducts();
-  if (state.tab === "players") renderPlayers();
-  if (state.tab === "wish") renderWish();
+  if (state.tab==="products") renderProducts();
+  if (state.tab==="players")  renderPlayers();
+  if (state.tab==="wish")     renderWish();
 }
 
 // ====== 初期化 ======
@@ -362,41 +418,33 @@ function init() {
 
   const qInput = byId("q");
   const sortSel = byId("sort");
-  qInput.addEventListener("input", (e) => {
-    state.q = e.target.value;
-    renderCurrentTab();
-    if (state.tab === "players") renderPlayers();
+  qInput.addEventListener("input",(e)=>{
+    state.q = e.target.value; renderCurrentTab();
+    if (state.tab==="players") renderPlayers();
   });
-  sortSel.addEventListener("change", (e) => {
+  sortSel.addEventListener("change",(e)=>{
     state.sort = e.target.value;
-    if (state.tab === "products") renderProducts();
-    if (state.tab === "wish") renderWish();
+    if (state.tab==="products") renderProducts();
+    if (state.tab==="wish") renderWish();
   });
 
-  document.querySelectorAll(".type-pill").forEach((btn) => {
-    btn.addEventListener("click", () => {
-      state.type = btn.dataset.type;
-      setActiveTypePill();
-      if (state.tab === "products") renderProducts();
-
-      // DEBUG: どのタイプが押されたか
-      console.log("[DEBUG] type button clicked:", state.type);
+  document.querySelectorAll(".type-pill").forEach((btn)=>{
+    btn.addEventListener("click",()=>{
+      state.type = btn.dataset.type; setActiveTypePill();
+      if (state.tab==="products") renderProducts();
+    });
+  });
+  document.querySelectorAll(".tab-btn").forEach((btn)=>{
+    btn.addEventListener("click",()=>{
+      state.tab = btn.dataset.tab; setActiveTabButtons(); showView(state.tab); renderCurrentTab();
     });
   });
 
-  document.querySelectorAll(".tab-btn").forEach((btn) => {
-    btn.addEventListener("click", () => {
-      state.tab = btn.dataset.tab;
-      setActiveTabButtons();
-      showView(state.tab);
-      renderCurrentTab();
-    });
-  });
+  setActiveTypePill(); setActiveTabButtons(); showView(state.tab); renderCurrentTab();
 
-  setActiveTypePill();
-  setActiveTabButtons();
-  showView(state.tab);
-  renderCurrentTab();
+  // ルーター
+  router();
+  window.addEventListener("hashchange", router);
 }
 
 document.addEventListener("DOMContentLoaded", init);
@@ -406,56 +454,27 @@ document.addEventListener("DOMContentLoaded", init);
   const header = document.getElementById("siteHeader");
   const main   = document.querySelector("main");
   if (!header || !main) return;
-
   const isMobile = () => window.matchMedia("(max-width: 767px)").matches;
-
-  let lastY = window.scrollY;
-  let enabled = false;
-  let ticking = false;
+  let lastY = window.scrollY, enabled = false, ticking = false;
 
   function setSpacer() {
-    if (!isMobile()) {
-      main.style.paddingTop = "";
-      return;
-    }
+    if (!isMobile()) { main.style.paddingTop = ""; return; }
     const h = header.getBoundingClientRect().height;
     main.style.paddingTop = `${h}px`;
   }
-
   function onScroll() {
     if (!enabled) return;
-    const cur = window.scrollY;
-    const delta = cur - lastY;
-
-    if (Math.abs(delta) < 4) {
-      lastY = cur;
-      return;
-    }
-
-    if (delta > 0 && cur > 10) {
-      header.style.transform = "translateY(-100%)"; // 下スクロール → 隠す
-    } else {
-      header.style.transform = "translateY(0)";     // 上スクロール → 表示
-    }
+    const cur = window.scrollY, delta = cur - lastY;
+    if (Math.abs(delta) < 4) { lastY = cur; return; }
+    header.style.transform = (delta > 0 && cur > 10) ? "translateY(-100%)" : "translateY(0)";
     lastY = cur;
   }
-
-  function updateMode() {
-    enabled = isMobile();
-    header.style.transform = "translateY(0)";
-    setSpacer();
-  }
-
+  function updateMode() { enabled = isMobile(); header.style.transform = "translateY(0)"; setSpacer(); }
   updateMode();
   window.addEventListener("resize", updateMode);
   window.addEventListener("orientationchange", updateMode);
-
   window.addEventListener("scroll", () => {
-    if (ticking) return;
-    ticking = true;
-    requestAnimationFrame(() => {
-      onScroll();
-      ticking = false;
-    });
+    if (ticking) return; ticking = true;
+    requestAnimationFrame(()=>{ onScroll(); ticking = false; });
   });
 })();
