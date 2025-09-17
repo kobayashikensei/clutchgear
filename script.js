@@ -128,8 +128,8 @@ const state = {
   q: "",
   type: "all",
   sort: "popularity", // popularity | price | new
-- tab: "products",    // products | players | wish
-+ tab: "players",     // products | players | wish
+  tab: "products",    // products | players | wish
+　tab: "players",     // products | players | wish
   wishlist: loadWishlist(),
 };
 
@@ -254,8 +254,6 @@ function renderPlayers() {
           <article class="bg-white rounded-2xl shadow-sm border overflow-hidden hover:shadow-md transition">
             <div class="h-64 bg-neutral-100 overflow-hidden flex items-center justify-center">
   <img src="${pl.image}" alt="${pl.name}" class="max-h-full object-contain" />
-</div>
-
             </div>
             <div class="p-4">
               <h3 class="text-base font-semibold leading-tight">${pl.name}</h3>
@@ -472,7 +470,8 @@ function init() {
   } catch (e) {
     console.error("[ClutchGear] init->router failed:", e);
   }
-
+}
+document.addEventListener("DOMContentLoaded", init);
 
 // ====== モバイル時だけヘッダーをスクロールで隠す ======
 (function mobileHideHeader() {
