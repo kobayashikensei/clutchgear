@@ -4,27 +4,24 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>ClutchGear – カタログ</title>
-
-  <!-- Tailwind CDN（開発用）-->
   <script src="https://cdn.tailwindcss.com"></script>
-
   <link rel="stylesheet" href="./styles.css" />
 </head>
 <body class="bg-neutral-50 text-neutral-900">
 
-  <!-- ヘッダー -->
+  <!-- ヘッダー（スマホで隠れる） -->
   <header id="siteHeader"
-  class="fixed md:sticky top-0 left-0 right-0 z-30 bg-white/80 backdrop-blur border-b
-         transform transition-transform duration-300 will-change-transform">
+    class="fixed md:sticky top-0 left-0 right-0 z-30 bg-white/80 backdrop-blur border-b
+           transform transition-transform duration-300 will-change-transform">
     <div class="max-w-6xl mx-auto px-4 py-3 flex items-center gap-4">
       <h1 class="text-lg font-bold">ClutchGear</h1>
       <nav class="ml-auto text-sm text-neutral-600">
-        <a class="hover:text-neutral-900 mr-4" href="https://tiktok.com/@clutchgear666" target="_blank" rel="noreferrer">TikTok</a>
-        <a class="hover:text-neutral-900" href="https://x.com/clutchgear666" target="_blank" rel="noreferrer">X</a>
+        <a class="hover:text-neutral-900 mr-4" href="https://tiktok.com/@clutchgear" target="_blank" rel="noreferrer">TikTok</a>
+        <a class="hover:text-neutral-900" href="https://x.com/clutchgear" target="_blank" rel="noreferrer">X</a>
       </nav>
     </div>
 
-    <!-- 検索・フィルタ -->
+    <!-- 検索・タイプ・Sort -->
     <div class="max-w-6xl mx-auto px-4 pb-3">
       <div class="flex flex-col md:flex-row gap-3 items-stretch md:items-center">
         <div class="flex-1 flex items-center gap-2 bg-neutral-100 rounded-2xl px-4 py-2">
@@ -32,48 +29,45 @@
           <input id="q" class="w-full bg-transparent outline-none py-1" placeholder="検索：製品名・ブランド・タグ" />
         </div>
         <div class="flex gap-2 flex-wrap">
-          <button data-type="all" class="type-pill px-3 py-1.5 rounded-full text-sm border bg-black text-white border-black">All</button>
-          <button data-type="mouse" class="type-pill px-3 py-1.5 rounded-full text-sm border bg-white hover:bg-neutral-100">Mice</button>
-          <button data-type="keyboard" class="type-pill px-3 py-1.5 rounded-full text-sm border bg-white hover:bg-neutral-100">Keyboards</button>
-          <button data-type="headset" class="type-pill px-3 py-1.5 rounded-full text-sm border bg-white hover:bg-neutral-100">Headsets</button>
-          <button data-type="mousepad" class="type-pill px-3 py-1.5 rounded-full text-sm border bg-white hover:bg-neutral-100">Mousepads</button>
+          <button data-type="all"       class="type-pill px-3 py-1.5 rounded-full text-sm border bg-black text-white border-black">All</button>
+          <button data-type="mouse"     class="type-pill px-3 py-1.5 rounded-full text-sm border bg-white hover:bg-neutral-100">Mice</button>
+          <button data-type="keyboard"  class="type-pill px-3 py-1.5 rounded-full text-sm border bg-white hover:bg-neutral-100">Keyboards</button>
+          <button data-type="headset"   class="type-pill px-3 py-1.5 rounded-full text-sm border bg-white hover:bg-neutral-100">Headsets</button>
+          <button data-type="mousepad"  class="type-pill px-3 py-1.5 rounded-full text-sm border bg-white hover:bg-neutral-100">Mousepads</button>
         </div>
       </div>
-        
 
-        <div class="mt-2 flex justify-end">
-  <label class="text-xs text-neutral-500">Sort:</label>
-  <select id="sort" class="ml-2 text-sm px-2 py-1 rounded-lg border bg-white">
-    <option value="popularity">人気順</option>
-    <option value="price">価格が安い順</option>
-    <option value="new">新着順</option>
-  </select>
-</div>
-
+      <div class="mt-2 flex justify-end">
+        <label class="text-xs text-neutral-500">Sort:</label>
+        <select id="sort" class="ml-2 text-sm px-2 py-1 rounded-lg border bg-white">
+          <option value="popularity">人気順</option>
+          <option value="price">価格が安い順</option>
+          <option value="new">新着順</option>
+        </select>
       </div>
 
       <!-- タブ -->
       <nav class="mt-3 flex gap-2">
-  <button data-tab="players"  class="tab-btn px-3 py-1.5 rounded-full text-sm border bg-neutral-900 text-white border-neutral-900">プレイヤー</button>
-  <button data-tab="products" class="tab-btn px-3 py-1.5 rounded-full text-sm border bg-white hover:bg-neutral-100">プロダクト</button>
-  <button data-tab="wish"     class="tab-btn px-3 py-1.5 rounded-full text-sm border bg-white hover:bg-neutral-100">Wishlist (0)</button>
-</nav>
-
+        <button data-tab="products" class="tab-btn px-3 py-1.5 rounded-full text-sm border bg-neutral-900 text-white border-neutral-900">プロダクト</button>
+        <button data-tab="players"  class="tab-btn px-3 py-1.5 rounded-full text-sm border bg-white hover:bg-neutral-100">プレイヤー</button>
+        <button data-tab="wish"     class="tab-btn px-3 py-1.5 rounded-full text-sm border bg-white hover:bg-neutral-100">Wishlist (0)</button>
+      </nav>
     </div>
   </header>
 
   <!-- コンテンツ -->
   <main class="max-w-6xl mx-auto px-4 py-6">
-    <section id="productsView" class=""></section>
+    <section id="productsView"></section>
     <section id="playersView" class="hidden"></section>
     <section id="wishView"    class="hidden"></section>
+    <!-- プレイヤー詳細（専用ページ風） -->
+    <section id="playerDetailView" class="hidden"></section>
   </main>
 
   <footer class="border-t py-6 text-center text-xs text-neutral-500">
     © <span id="year"></span> ClutchGear. All rights reserved.
   </footer>
 
-  <script src="./script.js?v=debug2"></script>
+  <script src="./script.js?v=playerpage1"></script>
 </body>
 </html>
-
