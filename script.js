@@ -1,3 +1,8 @@
+// --- boot log & global error catcher ---
+console.log("[ClutchGear] booting...");
+window.addEventListener("error", (e) => {
+  console.error("[ClutchGear] JS error:", e.message, "at", e.filename, ":", e.lineno);
+});
 // ====== データ ======
 const PRODUCTS = [
   {
@@ -392,21 +397,36 @@ function renderPlayerDetail(id) {
 
 // ====== Router (hash) ======
 function router() {
-  const h = location.hash;
-  const detail = byId("playerDetailView");
-  if (h.startsWith("#/player/")) {
-    const id = decodeURIComponent(h.replace("#/player/",""));
-    byId("productsView").classList.add("hidden");
-    byId("playersView").classList.add("hidden");
-    byId("wishView").classList.add("hidden");
-    detail.classList.remove("hidden");
-    renderPlayerDetail(id);
-  } else {
-    detail.classList.add("hidden");
-    showView(state.tab);
-    renderCurrentTab();
+  try {
+    const h = location.hash;
+    const detail = document.getElementById("playerDetailView");
+    const products = document.getElementById("productsView");
+    const players  = document.getElementById("playersView");
+    const wish     = document.getElementById("wishView");
+
+    if (!detail || !products || !players || !wish) {
+      console.warn("[ClutchGear] required sections missing",
+        { detail: !!detail, products: !!products, players: !!players, wish: !!wish });
+      return; // セクションが無いときは何もしない（落とさない）
+    }
+
+    if (h.startsWith("#/player/")) {
+      const id = decodeURIComponent(h.replace("#/player/", ""));
+      products.classList.add("hidden");
+      players.classList.add("hidden");
+      wish.classList.add("hidden");
+      detail.classList.remove("hidden");
+      renderPlayerDetail(id);
+    } else {
+      detail.classList.add("hidden");
+      showView(state.tab);
+      renderCurrentTab();
+    }
+  } catch (err) {
+    console.error("[ClutchGear] router crash:", err);
   }
 }
+
 
 // ====== 現在タブ再描画 ======
 function renderCurrentTab() {
@@ -445,12 +465,14 @@ function init() {
 
   setActiveTypePill(); setActiveTabButtons(); showView(state.tab); renderCurrentTab();
 
-  // ルーター
-  router();
-  window.addEventListener("hashchange", router);
-}
+   // ルーター
+  try {
+    router();
+    window.addEventListener("hashchange", router);
+  } catch (e) {
+    console.error("[ClutchGear] init->router failed:", e);
+  }
 
-document.addEventListener("DOMContentLoaded", init);
 
 // ====== モバイル時だけヘッダーをスクロールで隠す ======
 (function mobileHideHeader() {
