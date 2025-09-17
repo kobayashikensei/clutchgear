@@ -48,54 +48,54 @@ const PRODUCTS = [
     addedAt: "2025-05-19",
     affiliate: "https://amzn.to/4gqSSs9",
   },
-{
-  id: "p-prod1",
-  name: "Razer Viper V3 Pro",
-  brand: "Razer",
-  type: "mouse", // ←必要なら keyboard / headset に変更
-  priceJPY: 26480,   // ←値段を入れる
-  image: "https://m.media-amazon.com/images/I/61BJ2MpgTTL._UF894,1000_QL80_.jpg",
-  tags: [],
-  popularity: 70,
-  addedAt: "2025-09-17",
-  affiliate: "https://amzn.to/4psNskF",
-},
-{
-  id: "p-prod2",
-  name: "Razer DeathAdder V3 Pro",
-  brand: "Razer",
-  type: "mouse",
-  priceJPY: 18385,
-  image: "https://m.media-amazon.com/images/I/51Y+PuoViSL.jpg",
-  tags: [],
-  popularity: 65,
-  addedAt: "2025-09-17",
-  affiliate: "https://amzn.to/4nxs1wS",
-},
-{
-  id: "p-prod3",
-  name: "ARTISAN NINJA FX ZERO",
-  brand: "ARTISAN",
-  type: "mousepad",
-  priceJPY: 4840,
-  image: "https://m.media-amazon.com/images/I/81Wocc2ZWUL._UF894,1000_QL80_.jpg",
-  tags: ["Large", "Cloth"],  // ← 空じゃなく特徴を入れるとベター
-  popularity: 80,
-  addedAt: "2025-09-17",
-  affiliate: "https://amzn.to/4nslSSE",
-},
-{
-  id: "p-prod4",
-  name: "ZOWIE H-SR-SE ROUGE II",
-  brand: "ZOWIE",
-  type: "mousepad",
-  priceJPY: 8480,
-  image: "https://m.media-amazon.com/images/I/71fjreU7yBL._UF894,1000_QL80_.jpg",
-  tags: [],
-  popularity: 75,
-  addedAt: "2025-09-17",
-  affiliate: "https://amzn.to/4gsCurn",
-},
+  {
+    id: "p-prod1",
+    name: "Razer Viper V3 Pro",
+    brand: "Razer",
+    type: "mouse",
+    priceJPY: 26480,
+    image: "https://m.media-amazon.com/images/I/61BJ2MpgTTL._UF894,1000_QL80_.jpg",
+    tags: [],
+    popularity: 70,
+    addedAt: "2025-09-17",
+    affiliate: "https://amzn.to/4psNskF",
+  },
+  {
+    id: "p-prod2",
+    name: "Razer DeathAdder V3 Pro",
+    brand: "Razer",
+    type: "mouse",
+    priceJPY: 18385,
+    image: "https://m.media-amazon.com/images/I/51Y+PuoViSL.jpg",
+    tags: [],
+    popularity: 65,
+    addedAt: "2025-09-17",
+    affiliate: "https://amzn.to/4nxs1wS",
+  },
+  {
+    id: "p-prod3",
+    name: "ARTISAN NINJA FX ZERO",
+    brand: "ARTISAN",
+    type: "mousepad",
+    priceJPY: 4840,
+    image: "https://m.media-amazon.com/images/I/81Wocc2ZWUL._UF894,1000_QL80_.jpg",
+    tags: ["Large", "Cloth"],
+    popularity: 80,
+    addedAt: "2025-09-17",
+    affiliate: "https://amzn.to/4nslSSE",
+  },
+  {
+    id: "p-prod4",
+    name: "ZOWIE H-SR-SE ROUGE II",
+    brand: "ZOWIE",
+    type: "mousepad",
+    priceJPY: 8480,
+    image: "https://m.media-amazon.com/images/I/71fjreU7yBL._UF894,1000_QL80_.jpg",
+    tags: [],
+    popularity: 75,
+    addedAt: "2025-09-17",
+    affiliate: "https://amzn.to/4gsCurn",
+  },
 ];
 
 const PLAYERS = [
@@ -176,21 +176,34 @@ function showView(tab) {
 // ====== レンダリング（Products） ======
 function getFilteredProducts() {
   let arr = PRODUCTS.slice();
-  if (state.type !== "all") arr = arr.filter((p) => p.type === state.type);
+
+  // type フィルタ
+  if (state.type !== "all") {
+    arr = arr.filter((p) => p.type === state.type);
+  }
+
+  // 検索フィルタ
   if (state.q.trim()) {
     const s = state.q.toLowerCase();
-    arr = arr.filter(
-      (p) =>
-        p.name.toLowerCase().includes(s) ||
-        p.brand.toLowerCase().includes(s) ||
-        p.tags.some((t) => t.toLowerCase().includes(s))
+    arr = arr.filter((p) =>
+      (p.name || "").toLowerCase().includes(s) ||
+      (p.brand || "").toLowerCase().includes(s) ||
+      (Array.isArray(p.tags) ? p.tags : []).some((t) => (t || "").toLowerCase().includes(s))
     );
   }
+
+  // 並び替え
   arr.sort((a, b) => {
     if (state.sort === "price") return a.priceJPY - b.priceJPY;
     if (state.sort === "new") return new Date(b.addedAt) - new Date(a.addedAt);
     return b.popularity - a.popularity;
   });
+
+  // DEBUG: ログ出力
+  console.log("[DEBUG] selected type:", state.type);
+  console.log("[DEBUG] filtered count:", arr.length);
+  console.log("[DEBUG] items:", arr.map((p) => ({ id: p.id, type: p.type, name: p.name })));
+
   return arr;
 }
 
@@ -227,7 +240,7 @@ function renderProducts() {
                 <a class="text-sm underline hover:no-underline" href="${p.affiliate}" target="_blank" rel="nofollow noopener noreferrer">購入リンク</a>
               </div>
               <div class="flex gap-2 flex-wrap">
-                ${p.tags.map((t) => `<span class="text-[11px] px-2 py-1 bg-neutral-100 rounded-full">${t}</span>`).join("")}
+                ${(Array.isArray(p.tags) ? p.tags : []).map((t) => `<span class="text-[11px] px-2 py-1 bg-neutral-100 rounded-full">${t}</span>`).join("")}
               </div>
             </div>
           </article>`;
@@ -236,6 +249,10 @@ function renderProducts() {
     </div>
   `;
 
+  // DEBUG: レンダ後ログ
+  console.log("[DEBUG] renderProducts() rendered:", list.length, "items");
+
+  // wishlist toggle
   root.querySelectorAll("[data-wish]").forEach((btn) => {
     btn.addEventListener("click", () => {
       const id = btn.getAttribute("data-wish");
@@ -313,7 +330,7 @@ function renderWish() {
               <a class="text-sm underline hover:no-underline" href="${p.affiliate}" target="_blank" rel="nofollow noopener noreferrer">購入リンク</a>
             </div>
             <div class="flex gap-2 flex-wrap">
-              ${p.tags.map((t) => `<span class="text-[11px] px-2 py-1 bg-neutral-100 rounded-full">${t}</span>`).join("")}
+              ${(Array.isArray(p.tags) ? p.tags : []).map((t) => `<span class="text-[11px] px-2 py-1 bg-neutral-100 rounded-full">${t}</span>`).join("")}
             </div>
           </div>
         </article>
@@ -361,6 +378,9 @@ function init() {
       state.type = btn.dataset.type;
       setActiveTypePill();
       if (state.tab === "products") renderProducts();
+
+      // DEBUG: どのタイプが押されたか
+      console.log("[DEBUG] type button clicked:", state.type);
     });
   });
 
