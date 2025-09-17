@@ -107,14 +107,14 @@ const PLAYERS = [
       { role: "Keyboard", itemId: "p-wooting-60he" },
       { role: "Mouse", itemId: "p-superlightx" },
     ],
-    image: "https://via.placeholder.com/640x480?text=DFM+meiy",
+    image: "https://team-detonation.net/wp-content/uploads/2025/01/hp_meiy.png",
   },
   {
     id: "pl-nats",
     name: "nAts (TL)",
     game: "VALORANT",
     devices: [{ role: "Mouse", itemId: "p-vx2-pro" }],
-    image: "https://via.placeholder.com/640x480?text=nAts",
+    image: "https://prosettings.net/cdn-cgi/image/dpr=1%2Cf=auto%2Cfit=pad%2Ch=675%2Cq=85%2Csharpen=2%2Cw=1200/wp-content/uploads/nats-1.png",
   },
 ];
 
