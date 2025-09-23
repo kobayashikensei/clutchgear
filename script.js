@@ -137,6 +137,18 @@ const PRODUCTS = [
     addedAt: "2025-08-20",
     affiliate: "https://amzn.to/4nbOzUa",
   },
+   {
+    id: "p-shure",
+    name: "SHURE シュア イヤホン 有線 SE215 SPE-A",
+    brand: "shure",
+    type: "headset",
+    priceJPY: 14189,
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSh7uqaCSmZwQButIEXHACcX5Eb9EhIO-f2sw&s",
+    tags: [],
+    popularity: 98,
+    addedAt: "2025-08-20",
+    affiliate: "https://amzn.to/3KhCWN5",
+  },
 ];
 
 const PLAYERS = [
