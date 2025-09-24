@@ -173,6 +173,18 @@ const PRODUCTS = [
     addedAt: "2025-08-20",
     affiliate: "https://amzn.to/4nmRxpc",
   },
+  {
+    id: "p-BenQ Zowie U2",
+    name: "BenQ Zowie U2",
+    brand: "BenQ",
+    type: "Mouse",
+    priceJPY: 12600,
+    image: "https://m.media-amazon.com/images/I/61wqy33Y28L._UF894,1000_QL80_.jpg",
+    tags: [],
+    popularity: 98,
+    addedAt: "2025-08-20",
+    affiliate: "https://amzn.to/4nrj3C4",
+  },
 ];
 
 const PLAYERS = [
