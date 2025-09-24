@@ -174,7 +174,7 @@ const PRODUCTS = [
     affiliate: "https://amzn.to/4nmRxpc",
   },
   {
-    id: "p-BenQ Zowie U2",
+    id: "p-BenQ-Zowie-U2",
     name: "BenQ Zowie U2",
     brand: "BenQ",
     type: "mouse",
@@ -191,162 +191,27 @@ const PLAYERS = [
   {
     id: "pl-meiy",
     name: "meiy",
-    team: "DetonatioN FocusMe",
-    game: "VALORANT",
+    team: "DFM",
     devices: [
       { role: "Keyboard", itemId: "p-wooting-60he" },
-      { role: "Mouse",    itemId: "p-superlightx" },
+      { role: "Mouse", itemId: "p-superlightx" },
       { role: "Mousepad", itemId: "p-pulsar" },
-      { role: "Headsets", itemId: "p-shure" },
-      { role: "Monitor",  itemId: "p-zowie" },
+      { role: "headsets", itemId: "p-shure" },
+      { role: "Monitor", itemId: "p-zowie" },
     ],
     image: "https://team-detonation.net/wp-content/uploads/2025/01/hp_meiy.png",
   },
   {
     id: "pl-nats",
     name: "nAts",
-    team: "Team Liquid",
-    game: "VALORANT",
+    team: "TL",
     devices: [
-      // itemId にスペースが入ると不具合になりやすいのでスラッグ化を推奨
-      { role: "Mouse",    itemId: "p-zowie-u2" },
+      { role: "Mouse", itemId: "p-BenQ-Zowie-U2" },
       { role: "Headsets", itemId: "p-hs-hyperx" },
     ],
-    image:
-      "https://prosettings.net/cdn-cgi/image/dpr=1%2Cf=auto%2Cfit=pad%2Ch=675%2Cq=85%2Csharpen=2%2Cw=1200/wp-content/uploads/nats-1.png",
+    image: "https://prosettings.net/cdn-cgi/image/dpr=1%2Cf=auto%2Cfit=pad%2Ch=675%2Cq=85%2Csharpen=2%2Cw=1200/wp-content/uploads/nats-1.png",
   },
 ];
-// 既存の参照を取得
-const productsView      = document.getElementById("productsView");
-const playersView       = document.getElementById("playersView");
-const wishView          = document.getElementById("wishView");
-const playerDetailView  = document.getElementById("playerDetailView");
-
-// セクション切替
-function show(id) {
-  [productsView, playersView, wishView, playerDetailView].forEach(sec => {
-    if (!sec) return;
-    sec.classList.toggle("hidden", sec.id !== id);
-  });
-}
-
-/* ==== 一覧（画像＋名前＋チーム＋Setting だけ） ==== */
-function renderPlayersList() {
-  playersView.innerHTML = `
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-      ${PLAYERS.map(p => `
-        <article class="bg-white rounded-2xl shadow-sm overflow-hidden cursor-pointer"
-                 data-id="${p.id}">
-          <img src="${p.image}" alt="${p.name}" loading="lazy" class="w-full h-56 object-cover" />
-          <div class="p-3 text-center">
-            <h3 class="font-semibold">${p.name}</h3>
-            <p class="text-sm text-neutral-500">${p.team ?? p.game ?? ""}</p>
-            <p class="text-xs text-blue-600 mt-1">Setting</p>
-          </div>
-        </article>
-      `).join("")}
-    </div>
-  `;
-}
-
-/* ==== 詳細（使用デバイスを表示。devices を活用） ==== */
-function renderPlayerDetail(playerId) {
-  const p = PLAYERS.find(x => x.id === playerId);
-  if (!p) return;
-
-  const deviceRows = (p.devices ?? []).map(d => `
-    <div class="flex items-center justify-between gap-3 p-3 bg-white rounded-xl border">
-      <div class="flex items-center gap-3">
-        <div class="w-10 h-10 rounded-md bg-neutral-100 flex items-center justify-center text-xs text-neutral-500">
-          ${d.role?.slice(0,1) ?? "?"}
-        </div>
-        <div>
-          <div class="text-xs text-neutral-500">${d.role ?? ""}</div>
-          <div class="font-medium">${resolveItemName(d.itemId)}</div>
-        </div>
-      </div>
-      <div class="flex gap-2">
-        <a class="px-3 py-1.5 text-sm rounded-full border hover:bg-neutral-50" href="${buyLink(d.itemId)}" target="_blank" rel="noreferrer">購入リンク</a>
-        <a class="px-3 py-1.5 text-sm rounded-full border hover:bg-neutral-50" href="${detailLink(d.itemId)}" target="_blank" rel="noreferrer">商品を見る</a>
-      </div>
-    </div>
-  `).join("");
-
-  playerDetailView.innerHTML = `
-    <div class="max-w-3xl mx-auto">
-      <button class="mb-4 text-sm text-blue-600 hover:underline" id="backToPlayers">← 一覧へ戻る</button>
-
-      <div class="bg-white rounded-2xl overflow-hidden shadow-sm">
-        <img src="${p.image}" alt="${p.name}" class="w-full h-64 object-cover" />
-        <div class="p-4">
-          <h2 class="text-xl font-bold">${p.name}</h2>
-          <p class="text-sm text-neutral-500">${p.team ?? p.game ?? ""}</p>
-          <p class="text-xs text-blue-600 mt-1">Setting</p>
-        </div>
-      </div>
-
-      <h3 class="mt-6 mb-2 font-semibold">使用デバイス</h3>
-      <div class="space-y-3">
-        ${deviceRows || `<p class="text-sm text-neutral-500">デバイス情報は準備中です。</p>`}
-      </div>
-    </div>
-  `;
-
-  document.getElementById("backToPlayers")?.addEventListener("click", () => {
-    show("playersView");
-  });
-
-  show("playerDetailView");
-}
-
-/* ==== 商品名/リンクの解決（必要に応じて差し替え） ==== */
-function resolveItemName(itemId) { return (itemId || "").replace(/^p-/, "").replace(/-/g, " ").toUpperCase(); }
-function buyLink(itemId)        { return `#buy/${encodeURIComponent(itemId ?? "")}`; }
-function detailLink(itemId)     { return `#item/${encodeURIComponent(itemId ?? "")}`; }
-
-/* ==== 一覧カードクリックで詳細へ ==== */
-playersView.addEventListener("click", (e) => {
-  const card = e.target.closest("article[data-id]");
-  if (!card) return;
-  renderPlayerDetail(card.getAttribute("data-id"));
-});
-
-/* ==== タブ切替 ==== */
-document.querySelectorAll(".tab-btn").forEach(btn => {
-  btn.addEventListener("click", () => {
-    const tab = btn.getAttribute("data-tab");
-    if (tab === "players") {
-      renderPlayersList();
-      show("playersView");
-    } else if (tab === "products") {
-      show("productsView");
-    } else if (tab === "wish") {
-      show("wishView");
-    }
-    // 見た目更新
-    document.querySelectorAll(".tab-btn").forEach(b => {
-      const active = b === btn;
-      b.classList.toggle("bg-neutral-900", active);
-      b.classList.toggle("text-white", active);
-      b.classList.toggle("border-neutral-900", active);
-      b.classList.toggle("bg-white", !active);
-      b.classList.toggle("text-neutral-900", !active);
-    });
-  });
-});
-
-/* ==== 初期表示（プレイヤータブが選択中なら一覧生成） ==== */
-window.addEventListener("DOMContentLoaded", () => {
-  const y = document.getElementById("year");
-  if (y) y.textContent = new Date().getFullYear();
-
-  const playersTabIsActive =
-    document.querySelector('[data-tab="players"]')?.classList.contains("text-white");
-  if (playersTabIsActive) {
-    renderPlayersList();
-    show("playersView");
-  }
-});
 
 // ====== 状態 ======
 const state = {
