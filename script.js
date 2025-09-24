@@ -149,6 +149,18 @@ const PRODUCTS = [
     addedAt: "2025-08-20",
     affiliate: "https://amzn.to/3KhCWN5",
   },
+   {
+    id: "p-pulsar",
+    name: "Pulsar Superglide2",
+    brand: "Pulsar",
+    type: "mousepad",
+    priceJPY: 16590,
+    image: "https://m.media-amazon.com/images/I/61agQrB7TfL._UF894,1000_QL80_.jpg",
+    tags: [],
+    popularity: 98,
+    addedAt: "2025-08-20",
+    affiliate: "https://amzn.to/46kbXcf",
+  },
 ];
 
 const PLAYERS = [
