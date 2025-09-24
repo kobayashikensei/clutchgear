@@ -139,7 +139,7 @@ const PRODUCTS = [
   },
    {
     id: "p-shure",
-    name: "SHURE シュア イヤホン 有線 SE215 SPE-A",
+    name: "SHURE SE215 SPE-A",
     brand: "shure",
     type: "headset",
     priceJPY: 14189,
