@@ -195,6 +195,9 @@ const PLAYERS = [
     devices: [
       { role: "Keyboard", itemId: "p-wooting-60he" },
       { role: "Mouse", itemId: "p-superlightx" },
+      { role: "Mousepad", itemId: "p-pulsar" },
+      { role: "headsets", itemId: "p-shure" },
+      { role: "Monitor", itemId: "p-zowie" },
     ],
     image: "https://team-detonation.net/wp-content/uploads/2025/01/hp_meiy.png",
   },
