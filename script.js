@@ -161,6 +161,18 @@ const PRODUCTS = [
     addedAt: "2025-08-20",
     affiliate: "https://amzn.to/46kbXcf",
   },
+   {
+    id: "p-zowie",
+    name: "BenQ ZOWIE XL2566K ",
+    brand: "BenQ",
+    type: "Monitor",
+    priceJPY: 64000,
+    image: "https://m.media-amazon.com/images/I/51ZSY7rAr+L.jpg",
+    tags: [],
+    popularity: 98,
+    addedAt: "2025-08-20",
+    affiliate: "https://amzn.to/4nmRxpc",
+  },
 ];
 
 const PLAYERS = [
