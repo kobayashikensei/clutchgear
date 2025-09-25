@@ -245,6 +245,18 @@ const PRODUCTS = [
     addedAt: "2025-08-20",
     affiliate: null,
   },
+   {
+    id: "p-KZ ZS10 PRO",
+    name: "KZ ZS10 PRO",
+    brand: "H HIFIHEAR",
+    type: "headsets",
+    priceJPY: 5799,
+    image: "https://m.media-amazon.com/images/I/61IpkpFxugL.jpg",
+    tags: [],
+    popularity: 98,
+    addedAt: "2025-08-20",
+    affiliate: "https://amzn.to/42doMmm",
+  },
 ];
 
 const PLAYERS = [
@@ -280,6 +292,7 @@ const PLAYERS = [
       { role: "Keyboard", itemId: "p-Pulsar-PCMK-2HE-TKL" },
       { role: "Mouse", itemId: "p-Logicool-GPRO-X-SUPERLIGHT-2-DEX" },
       { role: "Mousepad", itemId: "p-gon-custom-mousepad" },
+      { role: "Headsets", itemId: "p-KZ ZS10 PRO" },
       { role: "Monitor", itemId: "p-zowie-xl2566k" },
     ],
     image: "https://fennel-esports.com/manage/wp-content/uploads/2025/03/FL_member_ph_GON.png",
