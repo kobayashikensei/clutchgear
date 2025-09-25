@@ -273,7 +273,7 @@ const PLAYERS = [
     image: "https://prosettings.net/cdn-cgi/image/dpr=1%2Cf=auto%2Cfit=pad%2Ch=675%2Cq=85%2Csharpen=2%2Cw=1200/wp-content/uploads/nats-1.png",
   },
   {
-    id: "pl-GON",
+    id: "pl-gon",
     name: "GON",
     team: "FL",
     devices: [
