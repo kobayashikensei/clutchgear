@@ -32,7 +32,7 @@ const PRODUCTS = [
   {
     id: "p-superlightx",
     name: "Logitech G PRO X Superlight 2",
-    brand: "Logitech G",
+    brand: "Logicool",
     type: "mouse",
     priceJPY: 22050,
     image: "https://images-fe.ssl-images-amazon.com/images/I/51aHtlvwrGL._AC_UL210_SR210,210_.jpg",
