@@ -233,6 +233,18 @@ const PRODUCTS = [
     addedAt: "2025-08-20",
     affiliate: "https://amzn.to/4nJkdbv",
   },
+  {
+    id: "p-gon-custom-mousepad",
+    name: "GON Custom Mousepad",
+    brand: "original",
+    type: "mousepad",
+    priceJPY: ,
+    image: "https://pbs.twimg.com/media/Gg8E2SMbQAEhDBh?format=jpg&name=medium",
+    tags: [],
+    popularity: 98,
+    addedAt: "2025-08-20",
+    affiliate: "https://x.com/SaTs_apex/status/1877724904294117853",
+  },
 ];
 
 const PLAYERS = [
@@ -254,11 +266,23 @@ const PLAYERS = [
     name: "nAts",
     team: "TL",
     devices: [
-      { role: "Mouse", itemId: "p-BenQ-Zowie-U2" },
       { role: "Keyboard", itemId: "p-Wooting 80HE" },
+      { role: "Mouse", itemId: "p-BenQ-Zowie-U2" },
       { role: "Headsets", itemId: "p-hs-hyperx" },
     ],
     image: "https://prosettings.net/cdn-cgi/image/dpr=1%2Cf=auto%2Cfit=pad%2Ch=675%2Cq=85%2Csharpen=2%2Cw=1200/wp-content/uploads/nats-1.png",
+  },
+  {
+    id: "pl-GON",
+    name: "GON",
+    team: "FL",
+    devices: [
+      { role: "Keyboard", itemId: "p-Pulsar-PCMK-2HE-TKL" },
+      { role: "Mouse", itemId: "p-Logicool-GPRO-X-SUPERLIGHT-2-DEX" },
+      { role: "Mousepad", itemId: "p-gon-custom-mousepad" },
+      { role: "Monitor", itemId: "p-zowie" },
+    ],
+    image: "https://fennel-esports.com/manage/wp-content/uploads/2025/03/FL_member_ph_GON.png",
   },
 ];
 
