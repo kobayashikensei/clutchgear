@@ -162,7 +162,7 @@ const PRODUCTS = [
     affiliate: "https://amzn.to/46kbXcf",
   },
    {
-    id: "p-zowie",
+    id: "p-zowie-xl2566k",
     name: "BenQ ZOWIE XL2566K ",
     brand: "BenQ",
     type: "monitor",
@@ -236,14 +236,14 @@ const PRODUCTS = [
   {
     id: "p-gon-custom-mousepad",
     name: "GON Custom Mousepad",
-    brand: "original",
+    brand: "custom",
     type: "mousepad",
-    priceJPY: ,
+    priceJPY: null,
     image: "https://pbs.twimg.com/media/Gg8E2SMbQAEhDBh?format=jpg&name=medium",
     tags: [],
     popularity: 98,
     addedAt: "2025-08-20",
-    affiliate: "https://x.com/SaTs_apex/status/1877724904294117853",
+    affiliate: null,
   },
 ];
 
@@ -280,7 +280,7 @@ const PLAYERS = [
       { role: "Keyboard", itemId: "p-Pulsar-PCMK-2HE-TKL" },
       { role: "Mouse", itemId: "p-Logicool-GPRO-X-SUPERLIGHT-2-DEX" },
       { role: "Mousepad", itemId: "p-gon-custom-mousepad" },
-      { role: "Monitor", itemId: "p-zowie" },
+      { role: "Monitor", itemId: "p-zowie-xl2566k" },
     ],
     image: "https://fennel-esports.com/manage/wp-content/uploads/2025/03/FL_member_ph_GON.png",
   },
