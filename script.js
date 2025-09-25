@@ -198,7 +198,7 @@ const PRODUCTS = [
     affiliate: "https://amzn.to/46Bqyit",
   },
    {
-    id: "Wallhack-初音ミク",
+    id: "p-Wallhack-初音ミク",
     name: "Wallhack × 初音ミク ガラス製ゲーミングマウスパッド",
     brand: "Wallhack",
     type: "mousepad",
@@ -210,7 +210,7 @@ const PRODUCTS = [
     affiliate: "https://amzn.to/48inkD9",
   },
   {
-    id: "Pulsar-PCMK-2HE-TKL",
+    id: "p-Pulsar-PCMK-2HE-TKL",
     name: "Pulsar PCMK 2HE TKL",
     brand: "Pulsar",
     type: "keyboard",
@@ -220,6 +220,18 @@ const PRODUCTS = [
     popularity: 98,
     addedAt: "2025-08-20",
     affiliate: "https://amzn.to/4pB2iWx",
+  },
+   {
+    id: "p-Wooting 80HE",
+    name: "Wooting 80HE",
+    brand: "wooting",
+    type: "keyboard",
+    priceJPY: 23980,
+    image: "https://m.media-amazon.com/images/I/3179HZvkLXL._UF1000,1000_QL80_.jpg",
+    tags: [],
+    popularity: 98,
+    addedAt: "2025-08-20",
+    affiliate: "https://amzn.to/4nJkdbv",
   },
 ];
 
@@ -243,6 +255,7 @@ const PLAYERS = [
     team: "TL",
     devices: [
       { role: "Mouse", itemId: "p-BenQ-Zowie-U2" },
+      { role: "Keyboard", itemId: "p-Wooting 80HE" },
       { role: "Headsets", itemId: "p-hs-hyperx" },
     ],
     image: "https://prosettings.net/cdn-cgi/image/dpr=1%2Cf=auto%2Cfit=pad%2Ch=675%2Cq=85%2Csharpen=2%2Cw=1200/wp-content/uploads/nats-1.png",
