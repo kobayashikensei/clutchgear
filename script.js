@@ -257,6 +257,18 @@ const PRODUCTS = [
     addedAt: "2025-08-20",
     affiliate: "https://amzn.to/42doMmm",
   },
+  {
+    id: "p-Fanmusic-Truthear-Hexa",
+    name: "Fanmusic Truthear Hexa",
+    brand: "Fanmusic",
+    type: "headsets",
+    priceJPY: 13000,
+    image: "https://m.media-amazon.com/images/I/51o2AmTcLYL.jpg",
+    tags: [],
+    popularity: 98,
+    addedAt: "2025-08-20",
+    affiliate: "https://amzn.to/4pCKZUZ",
+  },
 ];
 
 const PLAYERS = [
@@ -296,6 +308,19 @@ const PLAYERS = [
       { role: "Monitor", itemId: "p-zowie-xl2566k" },
     ],
     image: "https://fennel-esports.com/manage/wp-content/uploads/2025/03/FL_member_ph_GON.png",
+  },
+  {
+    id: "pl-gyen",
+    name: "gyen",
+    team: "DFM",
+    devices: [
+      { role: "Keyboard", itemId: "p-wooting-60he" },
+      { role: "Mouse", itemId: "p-prod1" },
+      { role: "Mousepad", itemId: "p-prod4" },
+      { role: "Headsets", itemId: "p-Fanmusic-Truthear-Hexa" },
+      { role: "Monitor", itemId: "p-zowie-xl2566k" },
+    ],
+    image: "https://team-detonation.net/wp-content/uploads/2025/01/hp_gyen-683x1024.png",
   },
 ];
 
