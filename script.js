@@ -243,7 +243,6 @@ const PRODUCTS = [
     tags: [],
     popularity: 98,
     addedAt: "2025-08-20",
-    affiliate: null,
   },
    {
     id: "p-KZ ZS10 PRO",
