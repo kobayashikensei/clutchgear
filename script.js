@@ -281,7 +281,7 @@ const PLAYERS = [
       { role: "Mouse", itemId: "p-superlightx" },
       { role: "Mousepad", itemId: "p-pulsar" },
       { role: "headsets", itemId: "p-shure" },
-      { role: "Monitor", itemId: "p-zowie" },
+      { role: "Monitor", itemId: "p-zowie-xl2566k" },
     ],
     image: "https://team-detonation.net/wp-content/uploads/2025/01/hp_meiy.png",
   },
