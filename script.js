@@ -291,7 +291,7 @@ const PRODUCTS = [
     tags: [],
     popularity: 98,
     addedAt: "2025-08-20",
-    affiliate: "null",
+    affiliate: "https://www.vaxee.co/jp/product.php?act=view&id=389",
   },
   {
     id: "p-BenQ-ZOWIE-G-SR-II",
@@ -316,6 +316,18 @@ const PRODUCTS = [
     popularity: 98,
     addedAt: "2025-08-20",
     affiliate: "https://amzn.to/46WhJB1",
+  },
+  {
+    id: "p-apple-earpods",
+    name: "Apple EarPods",
+    brand: "Apple",
+    type: "headsets",
+    priceJPY: 2700,
+    image: "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/MD827?wid=5225&hei=5225&fmt=jpeg&qlt=95&.v=1591744546000",
+    tags: [],
+    popularity: 98,
+    addedAt: "2025-08-20",
+    affiliate: "https://amzn.to/46ETMwG",
   },
 ];
 
