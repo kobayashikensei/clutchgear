@@ -471,7 +471,7 @@ function renderProducts() {
     return;
   }
   root.innerHTML = `
-    <div class="grid grid-cols-2 md:grid-cols-3 gap-5">
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
     ${arr.map(pl=>`
         <article class="group bg-white rounded-2xl shadow-sm border hover:shadow-md transition overflow-hidden"
                  data-product="${p.id}">
@@ -523,7 +523,7 @@ function renderPlayers() {
     return;
   }
   root.innerHTML = `
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
       ${arr.map(pl=>`
         <a href="#/player/${pl.id}" class="block">
           <article class="bg-white rounded-2xl shadow-sm border overflow-hidden hover:shadow-md transition">
@@ -557,7 +557,7 @@ function renderWish() {
     return;
   }
   root.innerHTML = `
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
       ${list.map(p=>`
         <article class="group bg-white rounded-2xl shadow-sm border hover:shadow-md transition overflow-hidden">
           <div class="aspect-[4/3] bg-neutral-100 overflow-hidden">
