@@ -341,6 +341,7 @@ const PLAYERS = [
       { role: "Keyboard", itemId: "p-Wooting 80HE" },
       { role: "Mouse", itemId: "p-BenQ-Zowie-U2" },
       { role: "Mousepad", itemId: "p-BenQ-ZOWIE-G-SR-II" },
+      { role: "Headsets", itemId: "p-hs-hyperx" },
       { role: "Monitor", itemId: "p-Dell AW2523HF" },
     ],
     image: "https://prosettings.net/cdn-cgi/image/dpr=1%2Cf=auto%2Cfit=pad%2Ch=675%2Cq=85%2Csharpen=2%2Cw=1200/wp-content/uploads/nats-1.png",
