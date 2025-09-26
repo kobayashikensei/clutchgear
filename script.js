@@ -471,8 +471,8 @@ function renderProducts() {
     return;
   }
   root.innerHTML = `
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-      ${list.map(p => `
+    <div class="grid grid-cols-2 md:grid-cols-3 gap-5">
+    ${arr.map(pl=>`
         <article class="group bg-white rounded-2xl shadow-sm border hover:shadow-md transition overflow-hidden"
                  data-product="${p.id}">
           <div class="aspect-[4/3] bg-neutral-100 overflow-hidden">
