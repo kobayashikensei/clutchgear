@@ -445,6 +445,31 @@ function showView(tab) {
 }
 
 // ====== Products ======
+function getFilteredProducts() {
+  let arr = PRODUCTS.slice();
+
+  // タイプ絞り込み
+  if (state.type !== "all") arr = arr.filter((p) => p.type === state.type);
+
+  // キーワード絞り込み
+  if (state.q.trim()) {
+    const s = state.q.toLowerCase();
+    arr = arr.filter((p) =>
+      (p.name || "").toLowerCase().includes(s) ||
+      (p.brand || "").toLowerCase().includes(s) ||
+      (Array.isArray(p.tags) ? p.tags : []).some(t => (t || "").toLowerCase().includes(s))
+    );
+  }
+
+  // ソート
+  arr.sort((a, b) => {
+    if (state.sort === "price") return (a.priceJPY ?? Infinity) - (b.priceJPY ?? Infinity);
+    if (state.sort === "new")   return new Date(b.addedAt) - new Date(a.addedAt);
+    return (b.popularity ?? 0) - (a.popularity ?? 0);
+  });
+
+  return arr;
+}
 function renderProducts() {
   const list = getFilteredProducts();
   const root = byId("productsView");
@@ -497,7 +522,7 @@ function renderPlayers() {
   const map = Object.fromEntries(PRODUCTS.map(p => [p.id,p]));
   const q = state.q.trim().toLowerCase();
   let arr = PLAYERS.slice();
-  if (q) arr = arr.filter(pl => pl.name.toLowerCase().includes(q) || pl.game.toLowerCase().includes(q));
+  if (q) arr = arr.filter(pl => pl.name.toLowerCase().includes(q) || (pl.team || "").toLowerCase().includes(q));
 
   const root = byId("playersView");
   if (!arr.length) {
@@ -514,7 +539,7 @@ function renderPlayers() {
             </div>
             <div class="p-4">
               <h3 class="text-base font-semibold leading-tight">${pl.name}</h3>
-              <p class="text-xs text-neutral-500 mb-3">${pl.game}</p>
+              <p class="text-xs text-neutral-500 mb-3">${pl.team}</p>
               <ul class="space-y-1">
                 ${pl.devices.map(d=>`
                   <li class="text-sm">
