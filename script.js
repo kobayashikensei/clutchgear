@@ -102,7 +102,7 @@ const PRODUCTS = [
     affiliate: "https://amzn.to/4gsCurn",
   },
   {
-    id: "p-Huntsman V3 Pro",
+    id: "p-Huntsman-V3-Pro",
     name: "Razer Huntsman V3 Pro",
     brand: "Razer",
     type: "keyboard",
@@ -126,7 +126,7 @@ const PRODUCTS = [
     affiliate: "https://amzn.to/4muQdPI",
   },
   {
-    id: "p-AIM1 陽炎 KAGERO",
+    id: "p-AIM1-陽炎-KAGERO",
     name: "AIM1 陽炎 KAGERO",
     brand: "AIM1",
     type: "mousepad",
@@ -222,7 +222,7 @@ const PRODUCTS = [
     affiliate: "https://amzn.to/4pB2iWx",
   },
    {
-    id: "p-Wooting 80HE",
+    id: "p-Wooting-80HE",
     name: "Wooting 80HE",
     brand: "wooting",
     type: "keyboard",
@@ -245,7 +245,7 @@ const PRODUCTS = [
     addedAt: "2025-08-20",
   },
    {
-    id: "p-KZ ZS10 PRO",
+    id: "p-KZ-ZS10-PRO",
     name: "KZ ZS10 PRO",
     brand: "H HIFIHEAR",
     type: "headsets",
@@ -305,7 +305,7 @@ const PRODUCTS = [
     affiliate: "https://amzn.to/4njoQcx",
   },
   {
-    id: "p-Dell AW2523HF",
+    id: "p-Dell-AW2523HF",
     name: "Dell AW2523HF",
     brand: "Dell",
     type: "monitor",
@@ -349,11 +349,11 @@ const PLAYERS = [
     name: "nAts",
     team: "TL",
     devices: [
-      { role: "Keyboard", itemId: "p-Wooting 80HE" },
+      { role: "Keyboard", itemId: "p-Wooting-80HE" },
       { role: "Mouse", itemId: "p-BenQ-Zowie-U2" },
       { role: "Mousepad", itemId: "p-BenQ-ZOWIE-G-SR-II" },
       { role: "Headsets", itemId: "p-hs-hyperx" },
-      { role: "Monitor", itemId: "p-Dell AW2523HF" },
+      { role: "Monitor", itemId: "p-Dell-AW2523HF" },
     ],
     image: "https://prosettings.net/cdn-cgi/image/dpr=1%2Cf=auto%2Cfit=pad%2Ch=675%2Cq=85%2Csharpen=2%2Cw=1200/wp-content/uploads/nats-1.png",
   },
@@ -365,7 +365,7 @@ const PLAYERS = [
       { role: "Keyboard", itemId: "p-Pulsar-PCMK-2HE-TKL" },
       { role: "Mouse", itemId: "p-Logicool-GPRO-X-SUPERLIGHT-2-DEX" },
       { role: "Mousepad", itemId: "p-gon-custom-mousepad" },
-      { role: "Headsets", itemId: "p-KZ ZS10 PRO" },
+      { role: "Headsets", itemId: "p-KZ-ZS10-PRO" },
       { role: "Monitor", itemId: "p-zowie-xl2566k" },
     ],
     image: "https://fennel-esports.com/manage/wp-content/uploads/2025/03/FL_member_ph_GON.png",
