@@ -403,10 +403,10 @@ const state = {
   q: "",
   type: "all",
   sort: "popularity", // popularity | price | new
-  tab: "products",    // products | players | wish
-　tab: "players",     // products | players | wish
+  tab: "players",     // ← どちらか1つだけ。スマホ2列の確認なら players 推奨
   wishlist: loadWishlist(),
 };
+
 
 function loadWishlist() {
   try { return JSON.parse(localStorage.getItem("cg_wishlist_v1") || "[]"); }
@@ -445,24 +445,6 @@ function showView(tab) {
 }
 
 // ====== Products ======
-function getFilteredProducts() {
-  let arr = PRODUCTS.slice();
-  if (state.type !== "all") arr = arr.filter((p) => p.type === state.type);
-  if (state.q.trim()) {
-    const s = state.q.toLowerCase();
-    arr = arr.filter((p) =>
-      (p.name||"").toLowerCase().includes(s) ||
-      (p.brand||"").toLowerCase().includes(s) ||
-      (Array.isArray(p.tags)?p.tags:[]).some(t => (t||"").toLowerCase().includes(s))
-    );
-  }
-  arr.sort((a,b)=>{
-    if (state.sort==="price") return a.priceJPY-b.priceJPY;
-    if (state.sort==="new")   return new Date(b.addedAt)-new Date(a.addedAt);
-    return b.popularity-a.popularity;
-  });
-  return arr;
-}
 function renderProducts() {
   const list = getFilteredProducts();
   const root = byId("productsView");
@@ -472,7 +454,7 @@ function renderProducts() {
   }
   root.innerHTML = `
     <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
-    ${arr.map(pl=>`
+      ${list.map(p => `
         <article class="group bg-white rounded-2xl shadow-sm border hover:shadow-md transition overflow-hidden"
                  data-product="${p.id}">
           <div class="aspect-[4/3] bg-neutral-100 overflow-hidden">
@@ -489,8 +471,8 @@ function renderProducts() {
                 title="Wishlistに追加/削除">❤</button>
             </div>
             <div class="flex items-center justify-between">
-              <span class="text-lg font-bold">${yen(p.priceJPY)}</span>
-              <a class="text-sm underline hover:no-underline" href="${p.affiliate}" target="_blank" rel="nofollow noopener noreferrer">購入リンク</a>
+              <span class="text-lg font-bold">${p.priceJPY != null ? yen(p.priceJPY) : "—"}</span>
+              ${p.affiliate ? `<a class="text-sm underline hover:no-underline" href="${p.affiliate}" target="_blank" rel="nofollow noopener noreferrer">購入リンク</a>` : `<span class="text-xs text-neutral-400">リンク準備中</span>`}
             </div>
             <div class="flex gap-2 flex-wrap">
               ${(Array.isArray(p.tags)?p.tags:[]).map(t=>`<span class="text-[11px] px-2 py-1 bg-neutral-100 rounded-full">${t}</span>`).join("")}
