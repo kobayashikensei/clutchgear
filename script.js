@@ -328,6 +328,18 @@ const PRODUCTS = [
     addedAt: "2025-08-20",
     affiliate: "https://amzn.to/46ETMwG",
   },
+  {
+    id: "p-Logicool-SUPERLIGHT",
+    name: "Logicool G PRO X SUPERLIGHT",
+    brand: "logicool",
+    type: "mouse",
+    priceJPY: 15617,
+    image: "https://images-fe.ssl-images-amazon.com/images/I/41l9QIbAVSL._AC_UL210_SR210,210_.jpg",
+    tags: [],
+    popularity: 90,
+    addedAt: "2025-07-02",
+    affiliate: "https://amzn.to/46qL9qV",
+  },
 ];
 
 const PLAYERS = [
