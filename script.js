@@ -368,7 +368,7 @@ const PRODUCTS = [
     id: "p-Pulsar-Gaming-Gears-PCMK",
     name: "Pulsar Gears PCMK 2HE TKL",
     brand: "Pulsar",
-    type: "mouse",
+    type: "keyboard",
     priceJPY: 23719,
     image: "https://m.media-amazon.com/images/I/61ZpYu90HYL._UF894,1000_QL80_.jpg",
     tags: [],
