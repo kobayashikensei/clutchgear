@@ -439,7 +439,7 @@ const PLAYERS = [
       { role: "Headsets", itemId: "p-hs-hyperx" },
       { role: "Monitor", itemId: "p-Dell-AW2523HF" },
     ],
-    image: "https://prosettings.net/cdn-cgi/image/dpr=1%2Cf=auto%2Cfit=pad%2Ch=675%2Cq=85%2Csharpen=2%2Cw=1200/wp-content/uploads/nats-1.png",
+    image: "https://www.prosettings.gg/wp-content/uploads/2021/09/Nats-valorant-player-profile-2024.webp",
   },
   {
     id: "pl-gon",
