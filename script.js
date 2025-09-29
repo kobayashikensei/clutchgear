@@ -412,6 +412,18 @@ const PRODUCTS = [
     addedAt: "2025-07-02",
     affiliate: "https://amzn.to/4mIAFIm",
   },
+  {
+    id: "p-",
+    name: "BenQ ZOWIE XL2546K",
+    brand: "BenQ",
+    type: "monitor",
+    priceJPY: 42800,
+    image: "https://m.media-amazon.com/images/I/51IHtHVOOIL.jpg",
+    tags: [],
+    popularity: 90,
+    addedAt: "2025-07-02",
+    affiliate: "https://amzn.to/4mIAFIm",
+  },
 ];
 
 const PLAYERS = [
@@ -492,6 +504,19 @@ const PLAYERS = [
       { role: "Monitor", itemId: "p-BenQ-ZOWIE-XL2546K" },
     ],
     image: "https://zetadivision.com/wp-content/uploads/2021/12/ZETADIVISION_Dep_square-2-1.jpg",
+  },
+  {
+    id: "pl-sugarzero",
+    name: "SugarZ3ro",
+    team: "ZETA",
+    devices: [
+      { role: "Keyboard", itemId: "p-Wooting-80HE" },
+      { role: "Mouse", itemId: "p-superlightx" },
+      { role: "Mousepad", itemId: "" },
+      { role: "headsets", itemId: "p-shure" },
+      { role: "Monitor", itemId: "p-zowie-xl2566k" },
+    ],
+    image: "https://team-detonation.net/wp-content/uploads/2025/01/hp_meiy.png",
   },
 ];
 
