@@ -436,6 +436,18 @@ const PRODUCTS = [
     addedAt: "2025-07-02",
     affiliate: "https://amzn.to/4nusikR",
   },
+  {
+    id: "p-INZONE H9",
+    name: "SONY INZONE H9",
+    brand: "SONY",
+    type: "headset",
+    priceJPY: 3100,
+    image: "https://m.media-amazon.com/images/I/51rN2qPDYOL._UF1000,1000_QL80_.jpg",
+    tags: [],
+    popularity: 90,
+    addedAt: "2025-07-02",
+    affiliate: "https://amzn.to/42QqbPT",
+  },
 ];
 
 const PLAYERS = [
@@ -529,6 +541,19 @@ const PLAYERS = [
       { role: "Monitor", itemId: "p-zowie-xl2566k" },
     ],
     image: "https://zetadivision.com/wp-content/uploads/2021/12/ZETADIVISION_SugarZ3ro_square-2-1.jpg",
+  },
+  {
+    id: "pl-clz",
+    name: "clz",
+    team: "ZETA",
+    devices: [
+      { role: "Keyboard", itemId: "p-wooting-60he" },
+      { role: "Mouse", itemId: "p-superlightx" },
+      { role: "Mousepad", itemId: "p-prod3" },
+      { role: "headsets", itemId: "p-INZONE H9" },
+      { role: "Monitor", itemId: "p-zowie-xl2566k" },
+    ],
+    image: "https://zetadivision.com/wp-content/uploads/2024/10/xZETADIVISION_CLZ_square-2.jpg.pagespeed.ic.qFoTeLWi-L.jpg",
   },
 ];
 
