@@ -441,7 +441,7 @@ const PRODUCTS = [
     name: "SONY INZONE H9",
     brand: "SONY",
     type: "headset",
-    priceJPY: 3100,
+    priceJPY: 31000,
     image: "https://m.media-amazon.com/images/I/51rN2qPDYOL._UF1000,1000_QL80_.jpg",
     tags: [],
     popularity: 90,
