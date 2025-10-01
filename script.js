@@ -535,7 +535,7 @@ const PLAYERS = [
       { role: "Headsets", itemId: "p-hs-hyperx" },
       { role: "Monitor", itemId: "p-Dell-AW2523HF" },
     ],
-    image: "https://www.prosettings.gg/wp-content/uploads/2021/09/Nats-valorant-player-profile-2024.webp",
+    image: "https://pbs.twimg.com/media/Gs8q7gXWoAAjePi.jpg:large",
   },
   {
     id: "pl-gon",
@@ -561,7 +561,7 @@ const PLAYERS = [
       { role: "Headsets", itemId: "p-Fanmusic-Truthear-Hexa" },
       { role: "Monitor", itemId: "p-zowie-xl2566k" },
     ],
-    image: "https://team-detonation.net/wp-content/uploads/2025/01/hp_gyen-683x1024.png",
+    image: "https://better-buy.jp/wp-content/uploads/2024/11/dfm2025_gyen-min-683x1024-1-e1729909966190.png",
   },
   {
     id: "pl-laz",
