@@ -602,7 +602,7 @@ const PLAYERS = [
       { role: "headsets", itemId: "p-shure-se215-cla" },
       { role: "Monitor", itemId: "p-zowie-xl2566k" },
     ],
-    image: "https://zetadivision.com/wp-content/uploads/2024/10/xZETADIVISION_CLZ_square-2.jpg.pagespeed.ic.qFoTeLWi-L.jpg",
+    image: "https://tsg-official.com/valorant-news/wp-content/uploads/2025/05/image-6-12-1024x1024.jpg",
   },
 ];
 
