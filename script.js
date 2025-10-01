@@ -462,7 +462,7 @@ const PLAYERS = [
       { role: "headsets", itemId: "p-shure" },
       { role: "Monitor", itemId: "p-zowie-xl2566k" },
     ],
-    image: "https://team-detonation.net/wp-content/uploads/2025/01/hp_meiy.png",
+    image: "C:\Users\fca23\Downloads\名称未設定のデザイン.png",
   },
   {
     id: "pl-nats",
