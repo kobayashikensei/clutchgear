@@ -484,6 +484,30 @@ const PRODUCTS = [
     addedAt: "2025-07-02",
     affiliate: "https://amzn.to/3WiO0fu",
   },
+   {
+    id: "p-Pulser-ES2",
+    name: "Pulser ES2",
+    brand: "Pulser",
+    type: "mousepad",
+    priceJPY: 4980,
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIib-3AkrdxsCxJj2OjM9LXJuJvjf5KfHYnQ&s",
+    tags: [],
+    popularity: 98,
+    addedAt: "2025-08-20",
+    affiliate: "https://amzn.to/484EZho",
+  },
+   {
+    id: "p-BlackShark V2 Pro White Edition",
+    name: "Razer BlackShark V2 Pro White Edition",
+    brand: "Razer",
+    type: "headsets",
+    priceJPY: 29980,
+    image: "https://m.media-amazon.com/images/I/614Xkf6pOqL.jpg",
+    tags: [],
+    popularity: 90,
+    addedAt: "2025-07-02",
+    affiliate: "https://amzn.to/486pky4",
+  },
 ];
 
 const PLAYERS = [
@@ -603,6 +627,19 @@ const PLAYERS = [
       { role: "Monitor", itemId: "p-zowie-xl2566k" },
     ],
     image: "https://tsg-official.com/valorant-news/wp-content/uploads/2025/05/image-6-12-1024x1024.jpg",
+  },
+  {
+    id: "pl-xdll",
+    name: "Xdll",
+    team: "ZETA",
+    devices: [
+      { role: "Keyboard", itemId: "p-wooting-60he" },
+      { role: "Mouse", itemId: "p-V3-Sentinels-Edition" },
+      { role: "Mousepad", itemId: "p-Pulser-ES2" },
+      { role: "headsets", itemId: "p-BlackShark V2 Pro White Edition" },
+      { role: "Monitor", itemId: "p-zowie-xl2566k" },
+    ],
+    image: "https://zetadivision.com/wp-content/uploads/2024/10/ZETADIVISION_Xdll_square-2.jpg",
   },
 ];
 
