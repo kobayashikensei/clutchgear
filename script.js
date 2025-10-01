@@ -462,7 +462,7 @@ const PLAYERS = [
       { role: "headsets", itemId: "p-shure" },
       { role: "Monitor", itemId: "p-zowie-xl2566k" },
     ],
-    image: "C:\Users\fca23\Downloads\名称未設定のデザイン.png",
+    image: "https://pbs.twimg.com/profile_images/1856001554521927681/Qv937bs8_400x400.jpg",
   },
   {
     id: "pl-nats",
