@@ -607,7 +607,7 @@ const PLAYERS = [
       { role: "headsets", itemId: "p-Moondrop-Blessing-3" },
       { role: "Monitor", itemId: "p-INZONE-M10S" },
     ],
-    image: "https://prosettings.net/cdn-cgi/image/dpr=1%2Cf=auto%2Cfit=pad%2Ch=675%2Cq=85%2Csharpen=2%2Cw=1200/wp-content/uploads/tenz.png",
+    image: "https://s2-techtudo.glbimg.com/xLYaRg6ngzz3alf9KoTxqfmDk28=/0x0:2047x1423/984x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_08fbf48bc0524877943fe86e43087e7a/internal_photos/bs/2021/V/M/AhZfvAQO6BjPQAANgsAw/51209431721-486a0ff8e0-k.jpg",
   },
   {
     id: "pl-nats",
