@@ -378,7 +378,7 @@ const PRODUCTS = [
   },
   {
     id: "p-Dep-Edition-ES2-eSports-Mousepad",
-    name: "[Dep Edition] ES2 eSports Mousepad",
+    name: "[Dep Edition] Mousepad",
     brand: "",
     type: "mousepad",
     priceJPY: null,
@@ -546,7 +546,7 @@ const PRODUCTS = [
   },
    {
     id: "p-pulsar-TenZ-Edition",
-    name: "Pulsar TenZ Signature RED Edition",
+    name: "Pulsar TenZ Edition",
     brand: "Pulsar",
     type: "mouse",
     priceJPY: 21340,
