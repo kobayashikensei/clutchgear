@@ -9,7 +9,7 @@ button:hover { background: #f0f0f0; }
 /* プレイヤーカードの画像 */
 .player-card img {
   width: 100%;        /* 横幅いっぱい */
-  height: 180px;      /* 高さを固定（自由に変更OK） */
+  height: 100px;      /* 高さを固定（自由に変更OK） */
   object-fit: cover;  /* はみ出した部分をトリミング */
   border-radius: 8px; /* 角を丸めたいとき */
 }
