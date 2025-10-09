@@ -862,34 +862,44 @@ function renderProducts() {
 
 // ====== Players（一覧） ======
 function renderPlayers() {
-  const map = Object.fromEntries(PRODUCTS.map(p => [p.id,p]));
+  const map = Object.fromEntries(PRODUCTS.map(p => [p.id, p]));
   const q = state.q.trim().toLowerCase();
   let arr = PLAYERS.slice();
-  if (q) arr = arr.filter(pl => pl.name.toLowerCase().includes(q) || (pl.team || "").toLowerCase().includes(q));
+  if (q) arr = arr.filter(pl =>
+    pl.name.toLowerCase().includes(q) || (pl.team || "").toLowerCase().includes(q)
+  );
 
   const root = byId("playersView");
   if (!arr.length) {
     root.innerHTML = `<div class="py-16 text-center text-neutral-500">該当プレイヤーが見つかりません。</div>`;
     return;
   }
+
   root.innerHTML = `
     <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
-      ${arr.map(pl=>`
+      ${arr.map(pl => `
         <a href="#/player/${pl.id}" class="block">
           <article class="bg-white rounded-2xl shadow-sm border overflow-hidden hover:shadow-md transition">
-            <div class="h-64 bg-neutral-100 overflow-hidden flex items-center justify-center">
-  <img src="${pl.image}" alt="${pl.name}" class="max-h-full object-contain" />
-            </div>
-            <div class="p-4">
-              <h3 class="text-base font-semibold leading-tight">${pl.name}</h3>
-              <p class="text-xs text-neutral-500 mb-3">${pl.team}</p>
-              <ul class="space-y-1">
-                ${pl.devices.map(d=>`
-                  <li class="text-sm">
-                    <span class="text-neutral-500 mr-1">${d.role}:</span>
-                    <span class="font-medium">${map[d.itemId]?.name || "—"}</span>
-                  </li>`).join("")}
-              </ul>
+            <div class="p-4 flex items-start gap-3">
+              <!-- ★ ここが100×100pxのアイコン -->
+              <img
+                src="${pl.image}"
+                alt="${pl.name}"
+                class="w-[100px] h-[100px] object-cover rounded-full flex-shrink-0"
+                loading="lazy"
+              />
+              <div class="min-w-0">
+                <h3 class="text-base font-semibold leading-tight truncate">${pl.name}</h3>
+                <p class="text-xs text-neutral-500 mb-3">${pl.team ?? ""}</p>
+                <ul class="space-y-1">
+                  ${pl.devices.map(d => `
+                    <li class="text-sm">
+                      <span class="text-neutral-500 mr-1">${d.role}:</span>
+                      <span class="font-medium">${map[d.itemId]?.name ?? "—"}</span>
+                    </li>
+                  `).join("")}
+                </ul>
+              </div>
             </div>
           </article>
         </a>
@@ -897,6 +907,7 @@ function renderPlayers() {
     </div>
   `;
 }
+
 
 // ====== Wishlist ======
 function renderWish() {
