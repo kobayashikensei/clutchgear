@@ -862,12 +862,15 @@ function renderProducts() {
 
 // ====== Players（一覧） ======
 function renderPlayers() {
-  const map = Object.fromEntries(PRODUCTS.map(p => [p.id, p]));
+  const map = Object.fromEntries(PRODUCTS.map(p => [p.id, p])); // 使っていなければ削除可
   const q = state.q.trim().toLowerCase();
   let arr = PLAYERS.slice();
-  if (q) arr = arr.filter(pl =>
-    pl.name.toLowerCase().includes(q) || (pl.team || "").toLowerCase().includes(q)
-  );
+  if (q) {
+    arr = arr.filter(pl =>
+      pl.name.toLowerCase().includes(q) ||
+      (pl.team || "").toLowerCase().includes(q)
+    );
+  }
 
   const root = byId("playersView");
   if (!arr.length) {
@@ -878,29 +881,17 @@ function renderPlayers() {
   root.innerHTML = `
     <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
       ${arr.map(pl => `
-        <a href="#/player/${pl.id}" class="block">
-          <article class="bg-white rounded-2xl shadow-sm border overflow-hidden hover:shadow-md transition">
-            <div class="p-4 flex items-start gap-3">
-              <!-- ★ ここが100×100pxのアイコン -->
-              <img
-                src="${pl.image}"
-                alt="${pl.name}"
-                class="w-[100px] h-[100px] object-cover rounded-full flex-shrink-0"
-                loading="lazy"
-              />
-              <div class="min-w-0">
-                <h3 class="text-base font-semibold leading-tight truncate">${pl.name}</h3>
-                <p class="text-xs text-neutral-500 mb-3">${pl.team ?? ""}</p>
-                <ul class="space-y-1">
-                  ${pl.devices.map(d => `
-                    <li class="text-sm">
-                      <span class="text-neutral-500 mr-1">${d.role}:</span>
-                      <span class="font-medium">${map[d.itemId]?.name ?? "—"}</span>
-                    </li>
-                  `).join("")}
-                </ul>
-              </div>
-            </div>
+        <a href="#/player/${pl.id}" class="block group">
+          <article class="bg-white rounded-2xl shadow-sm border overflow-hidden hover:shadow-md transition text-center p-5">
+            <img
+              src="${pl.image}"
+              alt="${pl.name}"
+              class="w-[100px] h-[100px] object-cover rounded-full mx-auto mb-3 group-hover:scale-[1.03] transition"
+              loading="lazy"
+              referrerpolicy="no-referrer"
+            />
+            <h3 class="text-sm font-semibold leading-tight truncate">${pl.name}</h3>
+            <p class="text-xs text-neutral-500">${pl.team ?? ""}</p>
           </article>
         </a>
       `).join("")}
