@@ -594,7 +594,7 @@ const PLAYERS = [
       { role: "headsets", itemId: "p-shure" },
       { role: "Monitor", itemId: "p-zowie-xl2566k" },
     ],
-    image: "https://pbs.twimg.com/profile_images/1856001554521927681/Qv937bs8_400x400.jpg",
+    image: "https://team-detonation.net/wp-content/uploads/2025/01/hp_meiy.png",
   },
   {
     id: "pl-tenz",
@@ -607,7 +607,7 @@ const PLAYERS = [
       { role: "headsets", itemId: "p-Moondrop-Blessing-3" },
       { role: "Monitor", itemId: "p-INZONE-M10S" },
     ],
-    image: "https://s2-techtudo.glbimg.com/xLYaRg6ngzz3alf9KoTxqfmDk28=/0x0:2047x1423/984x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_08fbf48bc0524877943fe86e43087e7a/internal_photos/bs/2021/V/M/AhZfvAQO6BjPQAANgsAw/51209431721-486a0ff8e0-k.jpg",
+    image: "https://prosettings.net/cdn-cgi/image/dpr=1%2Cf=auto%2Cfit=pad%2Ch=675%2Cq=85%2Csharpen=2%2Cw=1200/wp-content/uploads/tenz.png",
   },
   {
     id: "pl-nats",
@@ -646,7 +646,7 @@ const PLAYERS = [
       { role: "Headsets", itemId: "p-Fanmusic-Truthear-Hexa" },
       { role: "Monitor", itemId: "p-zowie-xl2566k" },
     ],
-    image: "https://better-buy.jp/wp-content/uploads/2024/11/dfm2025_gyen-min-683x1024-1-e1729909966190.png",
+    image: "https://team-detonation.net/wp-content/uploads/2025/01/hp_gyen.png",
   },
   {
     id: "pl-aace",
