@@ -599,7 +599,7 @@ const PLAYERS = [
   {
     id: "pl-tenz",
     name: "Tenz",
-    team: "",
+    team: "Unattached",
     devices: [
       { role: "Keyboard", itemId: "p-Wooting-80HE" },
       { role: "Mouse", itemId: "p-pulsar-TenZ-Edition" },
