@@ -580,6 +580,18 @@ const PRODUCTS = [
     addedAt: "2025-08-20",
     affiliate: "https://amzn.to/487bETx",
   },
+   {
+    id: "p-SUPERLIGHT-red",
+    name: "Logicool G PRO X SUPERLIGHT レッド",
+    brand: "Logiool",
+    type: "mouse",
+    priceJPY: 15800,
+    image: "https://m.media-amazon.com/images/I/41mNB8ie0eL._UF894,1000_QL80_.jpg",
+    tags: [],
+    popularity: 90,
+    addedAt: "2025-07-02",
+    affiliate: "https://amzn.to/4hnDhKz",
+  },
 ];
 
 const PLAYERS = [
@@ -738,6 +750,19 @@ const PLAYERS = [
       { role: "Monitor", itemId: "p-zowie-xl2566k" },
     ],
     image: "https://zetadivision.com/wp-content/uploads/2024/10/ZETADIVISION_Xdll_square-2.jpg",
+  },
+   {
+    id: "pl-art",
+    name: "Art",
+    team: "DFM",
+    devices: [
+      { role: "Keyboard", itemId: "p-wooting-60he" },
+      { role: "Mouse", itemId: "p-SUPERLIGHT-red" },
+      { role: "Mousepad", itemId: "p-prod3" },
+      { role: "headsets", itemId: "p-shure" },
+      { role: "Monitor", itemId: "p-zowie-xl2566k" },
+    ],
+    image: "https://owcdn.net/img/674037af91130.png",
   },
 ];
 
