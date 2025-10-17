@@ -664,7 +664,7 @@ const PLAYERS = [
       { role: "Mouse", itemId: "p-Razer-Viper-V3-Pro" },
       { role: "Mousepad", itemId: "p-Pulsar-Superglide2" },
       { role: "headsets", itemId: "p-Apple-EarPods" },
-      { role: "Monitor", itemId: "p-p-BenQ-ZOWIE-XL2566K" },
+      { role: "Monitor", itemId: "p-BenQ-ZOWIE-XL2566K" },
     ],
     image: "https://team-detonation.net/wp-content/uploads/2025/01/hp_meiy.png",
   },
