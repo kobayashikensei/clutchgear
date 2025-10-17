@@ -269,7 +269,7 @@ const PRODUCTS = [
     affiliate: "https://amzn.to/4pCKZUZ",
   },
   {
-    id: "ZENAIM-KEYBOARD",
+    id: "p-ZENAIM-KEYBOARD",
     name: "ZENAIM KEYBOARD",
     brand: "ZENAIM",
     type: "keyboard",
