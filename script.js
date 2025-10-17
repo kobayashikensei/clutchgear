@@ -78,7 +78,7 @@ const PRODUCTS = [
     affiliate: "https://amzn.to/4nxs1wS",
   },
   {
-    id: "p-ARTISAN-NINJA-FX-ZERO"
+    id: "p-ARTISAN-NINJA-FX-ZERO",
     name: "ARTISAN NINJA FX ZERO",
     brand: "ARTISAN",
     type: "mousepad",
