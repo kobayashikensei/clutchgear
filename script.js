@@ -1,4 +1,4 @@
-// --- boot log & global error catcher ---
+Q// --- boot log & global error catcher ---
 console.log("[ClutchGear] booting...");
 window.addEventListener("error", (e) => {
   console.error("[ClutchGear] JS error:", e.message, "at", e.filename, ":", e.lineno);
@@ -90,8 +90,8 @@ const PRODUCTS = [
     affiliate: "https://amzn.to/4nslSSE",
   },
   {
-    id: "p-ZOWIE-H-SR-SE-ROUGE-II",
-    name: "ZOWIE H-SR-SE ROUGE II",
+    id: "p-BenQ-ZOWIE-H-SR-SE-ROUGE-II",
+    name: "BenQ ZOWIE H-SR-SE ROUGE II",
     brand: "ZOWIE",
     type: "mousepad",
     priceJPY: 8480,
@@ -714,8 +714,8 @@ const PLAYERS = [
     devices: [
       { role: "Keyboard", itemId: "p-wooting-60HE" },
       { role: "Mouse", itemId: "p-Razer-Viper-V3-Pro" },
-      { role: "Mousepad", itemId: "p-ZOWIE-G-SR-SE-Rouge" },
-      { role: "Headsets", itemId: "p-TRUTHEAR-HEXA" },
+      { role: "Mousepad", itemId: "p-BenQ-ZOWIE-G-SR-II" },
+      { role: "Headsets", itemId: "p-Fanmusic-Truthear-Hexa" },
       { role: "Monitor", itemId: "p-BenQ-ZOWIE-XL2566X+" },
     ],
     image: "https://team-detonation.net/wp-content/uploads/2025/01/hp_gyen.png",
