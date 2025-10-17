@@ -583,7 +583,7 @@ const PRODUCTS = [
    {
     id: "p-Logicool-G-PRO-X-SUPERLIGHT-レッド",
     name: "Logicool G PRO X SUPERLIGHT レッド",
-    brand: "Logiool",
+    brand: "Logicool",
     type: "mouse",
     priceJPY: 15800,
     image: "https://m.media-amazon.com/images/I/41mNB8ie0eL._UF894,1000_QL80_.jpg",
