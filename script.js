@@ -592,6 +592,30 @@ const PRODUCTS = [
     addedAt: "2025-07-02",
     affiliate: "https://amzn.to/4hnDhKz",
   },
+   {
+    id: "p-ZYGEN-NP-01S",
+    name: "ZYGEN NP-01S オレンジ",
+    brand: "VAXEE",
+    type: "mouse",
+    priceJPY: 18900,
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSTUsrv6YajQsnwDVrXdTW4GWSlbk59ZBkT0g&s",
+    tags: [],
+    popularity: 98,
+    addedAt: "2025-08-20",
+    affiliate: "https://www.vaxee.co/jp/product.php?act=view&id=236",
+  },
+  {
+    id: "p-Apex-Pro-Mini",
+    name: "SteelSeries Apex Pro Mini",
+    brand: "SteelSeries",
+    type: "keyboard",
+    priceJPY: 35180,
+    image: "https://m.media-amazon.com/images/I/71iUUN3rSZL._AC_SX679_.jpg",
+    tags: [],
+    popularity: 98,
+    addedAt: "2025-08-20",
+    affiliate: "https://amzn.to/472x2a8",
+  },
 ];
 
 const PLAYERS = [
@@ -763,6 +787,19 @@ const PLAYERS = [
       { role: "Monitor", itemId: "p-zowie-xl2566k" },
     ],
     image: "https://owcdn.net/img/674037af91130.png",
+  },
+  {
+    id: "pl-jinboong",
+    name: "jinboong",
+    team: "DFM",
+    devices: [
+      { role: "Keyboard", itemId: "p-apex-pro-mini" },
+      { role: "Mouse", itemId: "p-ZYGEN-NP-01S" },
+      { role: "Mousepad", itemId: "p-prod3" },
+      { role: "headsets", itemId: "" },
+      { role: "Monitor", itemId: "p-zowie-xl2566k" },
+    ],
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFKOI2oho3L4k_FyiPc4uTEtWA4pTq3GVhqQ&s",
   },
 ];
 
