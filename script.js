@@ -610,7 +610,7 @@ const PRODUCTS = [
     brand: "SteelSeries",
     type: "keyboard",
     priceJPY: 35180,
-    image: "https://m.media-amazon.com/images/I/71iUUN3rSZL._AC_SX679_.jpg",
+    image: "https://m.media-amazon.com/images/I/71iUUN3rSZL.jpg",
     tags: [],
     popularity: 98,
     addedAt: "2025-08-20",
