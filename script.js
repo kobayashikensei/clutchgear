@@ -317,7 +317,7 @@ const PRODUCTS = [
     affiliate: "https://amzn.to/46WhJB1",
   },
   {
-    id: "p-Apple-Earpods",
+    id: "p-Apple-EarPods",
     name: "Apple EarPods",
     brand: "Apple",
     type: "headset",
@@ -664,7 +664,7 @@ const PLAYERS = [
       { role: "Mouse", itemId: "p-Razer-Viper-V3-Pro" },
       { role: "Mousepad", itemId: "p-Pulsar-Superglide2" },
       { role: "headsets", itemId: "p-Apple-EarPods" },
-      { role: "Monitor", itemId: "p-zowie-xl2566k" },
+      { role: "Monitor", itemId: "p-p-BenQ-ZOWIE-XL2566K" },
     ],
     image: "https://team-detonation.net/wp-content/uploads/2025/01/hp_meiy.png",
   },
