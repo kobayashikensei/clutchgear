@@ -616,6 +616,18 @@ const PRODUCTS = [
     addedAt: "2025-08-20",
     affiliate: "https://amzn.to/472x2a8",
   },
+  {
+    id: "p-WALLHACK-SP-004",
+    name: "WALLHACK SP-004",
+    brand: "WALLHACK",
+    type: "mousepad",
+    priceJPY: 19298,
+    image: "https://m.media-amazon.com/images/I/71pv+5sDrLL._UF894,1000_QL80_.jpg",
+    tags: [],
+    popularity: 90,
+    addedAt: "2025-07-02",
+    affiliate: "https://amzn.to/47hkKuU",
+  },
 ];
 
 const PLAYERS = [
@@ -800,6 +812,19 @@ const PLAYERS = [
       { role: "Monitor", itemId: "p-zowie-xl2566k" },
     ],
     image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFKOI2oho3L4k_FyiPc4uTEtWA4pTq3GVhqQ&s",
+  },
+  {
+    id: "pl-akeme",
+    name: "Akeme",
+    team: "DFM",
+    devices: [
+      { role: "Keyboard", itemId: "p-wooting-60he" },
+      { role: "Mouse", itemId: "p-prod1" },
+      { role: "Mousepad", itemId: "p-WALLHACK-SP-004" },
+      { role: "headsets", itemId: "" },
+      { role: "Monitor", itemId: "p-zowie-xl2566k" },
+    ],
+    image: "https://team-detonation.net/wp-content/uploads/2025/01/hp_akame.png",
   },
 ];
 
