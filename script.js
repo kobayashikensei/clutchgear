@@ -84,7 +84,7 @@ const PRODUCTS = [
     type: "mousepad",
     priceJPY: 4840,
     image: "https://m.media-amazon.com/images/I/81Wocc2ZWUL._UF894,1000_QL80_.jpg",
-    tags: ["Large", "Cloth"],
+    tags: [],
     popularity: 80,
     addedAt: "2025-09-17",
     affiliate: "https://amzn.to/4nslSSE",
