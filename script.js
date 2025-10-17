@@ -793,7 +793,7 @@ const PLAYERS = [
     name: "jinboong",
     team: "DFM",
     devices: [
-      { role: "Keyboard", itemId: "p-apex-pro-mini" },
+      { role: "Keyboard", itemId: "p-Apex-Pro-Mini" },
       { role: "Mouse", itemId: "p-ZYGEN-NP-01S" },
       { role: "Mousepad", itemId: "p-prod3" },
       { role: "headsets", itemId: "" },
