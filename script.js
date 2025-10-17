@@ -674,8 +674,8 @@ const PLAYERS = [
     team: "Unattached",
     devices: [
       { role: "Keyboard", itemId: "p-Wooting-80HE" },
-      { role: "Mouse", itemId: "p-Pulsar-TenZ-Signature-RED-Edition" },
-      { role: "Mousepad", itemId: "p-ARTISAN-NINJA-FX-Zero" },
+      { role: "Mouse", itemId: "p-pulsar-TenZ-Edition" },
+      { role: "Mousepad", itemId: "p-ARTISAN-NINJA-FX-ZERO" },
       { role: "headsets", itemId: "p-水月雨-Moondrop-Blessing-3" },
       { role: "Monitor", itemId: "p-SONY-INZONE-M10S" },
     ],
