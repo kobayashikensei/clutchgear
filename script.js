@@ -500,7 +500,7 @@ const PRODUCTS = [
     id: "p-Razer-BlackShark-V2-Pro-White-Edition",
     name: "Razer BlackShark V2 Pro White Edition",
     brand: "Razer",
-    type: "headsets",
+    type: "headset",
     priceJPY: 29980,
     image: "https://m.media-amazon.com/images/I/614Xkf6pOqL.jpg",
     tags: [],
