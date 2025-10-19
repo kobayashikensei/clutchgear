@@ -1,4 +1,4 @@
-Q// --- boot log & global error catcher ---
+// --- boot log & global error catcher ---
 console.log("[ClutchGear] booting...");
 window.addEventListener("error", (e) => {
   console.error("[ClutchGear] JS error:", e.message, "at", e.filename, ":", e.lineno);
